@@ -51,15 +51,9 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div style={{ flex: '0 0 360px', display: 'flex', justifyContent: 'center' }}>
-          <div style={{
-            width: '340px', height: '340px', borderRadius: '4px',
-            overflow: 'hidden', border: '1px solid #1a1a1a',
-            boxShadow: '0 0 80px rgba(200,216,232,0.03)',
-          }}>
-            <Image src="/robot.png" alt="Black Top Digital AI" width={340} height={340}
-              style={{ objectFit: 'cover', width: '100%', height: '100%' }} priority />
-          </div>
+        <div style={{ flex: '0 0 400px', display: 'flex', justifyContent: 'center' }}>
+          <Image src="/robot-black-bg.png" alt="Black Top Digital AI" width={400} height={400}
+            style={{ objectFit: 'contain', width: '100%', height: 'auto' }} priority />
         </div>
       </section>
 
