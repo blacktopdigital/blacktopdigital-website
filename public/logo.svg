@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <!-- Chrome gradient for edges -->
+    <linearGradient id="chrome" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8e8e8"/>
+      <stop offset="30%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#a0a0a0"/>
+      <stop offset="100%" stop-color="#d0d0d0"/>
+    </linearGradient>
+    <!-- Skull fill -->
+    <linearGradient id="skullFill" x1="0%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="50%" stop-color="#0d0d0d"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+    <!-- Visor gradient -->
+    <linearGradient id="visor" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="20%" stop-color="#1a1a2e"/>
+      <stop offset="50%" stop-color="#0f3460"/>
+      <stop offset="80%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <!-- Visor sheen -->
+    <linearGradient id="visorSheen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#00d4ff" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02"/>
+    </linearGradient>
+    <!-- Cyan glow -->
+    <linearGradient id="cyanGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00d4ff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00d4ff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/>
+    </linearGradient>
+    <!-- Panel gradient -->
+    <linearGradient id="panel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#222222"/>
+      <stop offset="100%" stop-color="#111111"/>
+    </linearGradient>
+    <!-- Glow filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="visorGlow" x="-10%" y="-30%" width="120%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="skullClip">
+      <polygon points="100,12 148,28 172,60 172,100 160,136 134,158 100,166 66,158 40,136 28,100 28,60 52,28"/>
+    </clipPath>
+  </defs>
+
+  <!-- Skull base shape - angular dome -->
+  <polygon points="100,12 148,28 172,60 172,100 160,136 134,158 100,166 66,158 40,136 28,100 28,60 52,28"
+    fill="url(#skullFill)" stroke="url(#chrome)" stroke-width="1.5"/>
+
+  <!-- Chrome edge highlights -->
+  <polyline points="52,28 100,12 148,28" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.6"/>
+  <polyline points="172,60 172,100" fill="none" stroke="#888888" stroke-width="0.8" opacity="0.4"/>
+  <polyline points="28,60 28,100" fill="none" stroke="#666666" stroke-width="0.8" opacity="0.3"/>
+
+  <!-- Forehead panel lines -->
+  <line x1="80" y1="18" x2="78" y2="52" stroke="#333333" stroke-width="0.7"/>
+  <line x1="120" y1="18" x2="122" y2="52" stroke="#333333" stroke-width="0.7"/>
+  <line x1="68" y1="30" x2="70" y2="52" stroke="#2a2a2a" stroke-width="0.5"/>
+  <line x1="132" y1="30" x2="130" y2="52" stroke="#2a2a2a" stroke-width="0.5"/>
+
+  <!-- Forehead center indent -->
+  <path d="M 92 20 Q 100 16 108 20 L 110 42 Q 100 46 90 42 Z"
+    fill="#111111" stroke="#2a2a2a" stroke-width="0.5"/>
+
+  <!-- Forehead sensor dot - glowing -->
+  <circle cx="100" cy="32" r="3" fill="#00d4ff" filter="url(#softGlow)" opacity="0.9"/>
+  <circle cx="100" cy="32" r="1.5" fill="#ffffff"/>
+
+  <!-- ===== VISOR / SHADES ===== -->
+  <!-- Visor outer frame -->
+  <rect x="32" y="82" width="136" height="38" rx="4" fill="#0a0a0a" stroke="url(#chrome)" stroke-width="1.2"/>
+  <!-- Visor fill with depth -->
+  <rect x="33" y="83" width="134" height="36" rx="3" fill="url(#visor)"/>
+  <!-- Visor inner sheen -->
+  <rect x="33" y="83" width="134" height="36" rx="3" fill="url(#visorSheen)"/>
+
+  <!-- Cyan glow line top of visor -->
+  <line x1="34" y1="85" x2="166" y2="85" stroke="url(#cyanGlow)" stroke-width="1" opacity="0.8" filter="url(#glow)"/>
+  <!-- Cyan glow line bottom of visor -->
+  <line x1="34" y1="117" x2="166" y2="117" stroke="url(#cyanGlow)" stroke-width="0.8" opacity="0.5"/>
+
+  <!-- BRAND TEXT ON VISOR -->
+  <text x="100" y="106"
+    font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif"
+    font-size="13.5"
+    font-weight="900"
+    letter-spacing="5"
+    text-anchor="middle"
+    fill="#ffffff"
+    opacity="0.9"
+    filter="url(#glow)">BLACK TOP</text>
+
+  <!-- Subtle reflection line across visor -->
+  <line x1="36" y1="96" x2="164" y2="96" stroke="#ffffff" stroke-width="0.4" opacity="0.12"/>
+
+  <!-- Visor corner screws/accents -->
+  <circle cx="42" cy="101" r="2.5" fill="#1a1a1a" stroke="#444" stroke-width="0.6"/>
+  <circle cx="158" cy="101" r="2.5" fill="#1a1a1a" stroke="#444" stroke-width="0.6"/>
+
+  <!-- ===== UPPER FACE ===== -->
+  <!-- Left eye socket (compound hex array) -->
+  <g transform="translate(56, 65)">
+    <!-- Hex compound eye -->
+    <polygon points="0,-10 8.6,-5 8.6,5 0,10 -8.6,5 -8.6,-5" fill="#0d0d0d" stroke="#00d4ff" stroke-width="1" filter="url(#glow)"/>
+    <!-- Inner hex cells -->
+    <polygon points="0,-5 4.3,-2.5 4.3,2.5 0,5 -4.3,2.5 -4.3,-2.5" fill="#001a2e" stroke="#0099bb" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="2.5" fill="#00d4ff" opacity="0.7"/>
+    <!-- Micro cells -->
+    <line x1="-8.6" y1="-5" x2="0" y2="0" stroke="#003344" stroke-width="0.4"/>
+    <line x1="8.6" y1="-5" x2="0" y2="0" stroke="#003344" stroke-width="0.4"/>
+    <line x1="0" y1="-10" x2="0" y2="0" stroke="#003344" stroke-width="0.4"/>
+    <line x1="-8.6" y1="5" x2="0" y2="0" stroke="#003344" stroke-width="0.4"/>
+    <line x1="8.6" y1="5" x2="0" y2="0" stroke="#003344" stroke-width="0.4"/>
+    <line x1="0" y1="10" x2="0" y2="0" stroke="#003344" stroke-width="0.4"/>
+  </g>
+
+  <!-- Right eye socket (single iris) -->
+  <g transform="translate(144, 65)">
+    <circle r="10" fill="#0d0d0d" stroke="#cc00ff" stroke-width="1" filter="url(#glow)"/>
+    <circle r="7" fill="#1a0020"/>
+    <circle r="4.5" fill="#6600aa" opacity="0.8"/>
+    <circle r="2.5" fill="#cc00ff" filter="url(#softGlow)"/>
+    <circle r="1" fill="#ffffff"/>
+    <!-- Iris ring detail -->
+    <circle r="6" fill="none" stroke="#440066" stroke-width="0.5"/>
+  </g>
+
+  <!-- ===== LOWER FACE ===== -->
+  <!-- Cheek panels -->
+  <path d="M 38 122 L 50 122 L 58 155 L 42 150 Z" fill="url(#panel)" stroke="#2a2a2a" stroke-width="0.6"/>
+  <path d="M 162 122 L 150 122 L 142 155 L 158 150 Z" fill="url(#panel)" stroke="#2a2a2a" stroke-width="0.6"/>
+
+  <!-- Chin/jaw area -->
+  <path d="M 58 120 L 142 120 L 148 158 L 100 166 L 52 158 Z" fill="url(#skullFill)" stroke="#222" stroke-width="0.5"/>
+
+  <!-- Mesh grille mouth -->
+  <rect x="68" y="132" width="64" height="20" rx="2" fill="#080808" stroke="#2a2a2a" stroke-width="0.8"/>
+  <!-- Grille lines vertical -->
+  <line x1="76" y1="132" x2="76" y2="152" stroke="#1f1f1f" stroke-width="0.7"/>
+  <line x1="84" y1="132" x2="84" y2="152" stroke="#1f1f1f" stroke-width="0.7"/>
+  <line x1="92" y1="132" x2="92" y2="152" stroke="#1f1f1f" stroke-width="0.7"/>
+  <line x1="100" y1="132" x2="100" y2="152" stroke="#1f1f1f" stroke-width="0.7"/>
+  <line x1="108" y1="132" x2="108" y2="152" stroke="#1f1f1f" stroke-width="0.7"/>
+  <line x1="116" y1="132" x2="116" y2="152" stroke="#1f1f1f" stroke-width="0.7"/>
+  <line x1="124" y1="132" x2="124" y2="152" stroke="#1f1f1f" stroke-width="0.7"/>
+  <!-- Grille lines horizontal -->
+  <line x1="68" y1="138" x2="132" y2="138" stroke="#1a1a1a" stroke-width="0.6"/>
+  <line x1="68" y1="144" x2="132" y2="144" stroke="#1a1a1a" stroke-width="0.6"/>
+  <!-- Grille glow hint -->
+  <rect x="68" y="132" width="64" height="3" rx="1" fill="url(#cyanGlow)" opacity="0.15"/>
+
+  <!-- Circuit traces on cheeks -->
+  <path d="M 48 70 L 48 78 L 38 78 L 38 86" stroke="#003333" stroke-width="0.7" fill="none"/>
+  <circle cx="48" cy="70" r="1.2" fill="#00d4ff" opacity="0.5"/>
+  <path d="M 152 70 L 152 78 L 162 78 L 162 86" stroke="#003333" stroke-width="0.7" fill="none"/>
+  <circle cx="152" cy="70" r="1.2" fill="#00d4ff" opacity="0.5"/>
+
+  <!-- Temple accent lines -->
+  <line x1="32" y1="90" x2="32" y2="112" stroke="#00d4ff" stroke-width="1.5" opacity="0.4" filter="url(#glow)"/>
+  <line x1="168" y1="90" x2="168" y2="112" stroke="#00d4ff" stroke-width="1.5" opacity="0.4" filter="url(#glow)"/>
+
+  <!-- Neck connector rings -->
+  <ellipse cx="100" cy="168" rx="20" ry="5" fill="none" stroke="#333" stroke-width="1"/>
+  <ellipse cx="100" cy="172" rx="16" ry="4" fill="none" stroke="#222" stroke-width="1"/>
+  <!-- Plasma conduit dots -->
+  <circle cx="84" cy="168" r="1.5" fill="#00d4ff" opacity="0.6" filter="url(#glow)"/>
+  <circle cx="116" cy="168" r="1.5" fill="#00d4ff" opacity="0.6" filter="url(#glow)"/>
+  <circle cx="100" cy="164" r="1.5" fill="#cc00ff" opacity="0.5" filter="url(#glow)"/>
+
+</svg>

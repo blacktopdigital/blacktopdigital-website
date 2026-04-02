@@ -22,7 +22,7 @@ export default function Nav() {
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
     }}>
       <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-        <Image src="/robot.png" alt="Black Top Digital" width={36} height={36} style={{ borderRadius: '4px', objectFit: 'cover' }} />
+        <Image src="/logo.svg" alt="Black Top Digital" width={36} height={36} style={{ objectFit: 'contain' }} />
         <span style={{ color: '#fff', fontWeight: 700, fontSize: '1rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
           Black Top Digital
         </span>
