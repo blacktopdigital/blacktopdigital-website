@@ -4,9 +4,13 @@
 
 const TEXTBELT_URL = 'https://textbelt.com/text'
 
+// Plain ASCII keeps the text in one cheap SMS segment (curly quotes or emoji force Unicode billing).
 function clean(value: unknown, max: number) {
   return String(value ?? '')
     .replace(/https?:\/\/\S+|www\.\S+/gi, '[link]')
+    .replace(/[‘’]/g, "'")
+    .replace(/[“”]/g, '"')
+    .replace(/[^\x20-\x7E\s]/g, '')
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, max)
@@ -33,13 +37,16 @@ export async function POST(request: Request) {
 
   const prettyPhone = `(${phone.slice(0, 3)}) ${phone.slice(3, 6)}-${phone.slice(6)}`
   // Business first so Weston knows who he's calling before he dials.
-  const text = [
-    'BTD chat lead - wants more info',
+  // Stay under ~140 chars: one TextBelt credit per text.
+  const base = [
+    'BTD chat lead',
     `Business: ${business || 'not given'}`,
     `Name: ${name}`,
     `Phone: ${prettyPhone}`,
-    message && `Said: "${message}"`,
-  ].filter(Boolean).join('\n')
+  ].join('\n')
+  const room = 140 - base.length - '\nAsked: '.length
+  const asked = message.length > room ? `${message.slice(0, room - 3)}...` : message
+  const text = message && room > 15 ? `${base}\nAsked: ${asked}` : base
 
   console.log('chat lead', { name, business, phone, message })
 
