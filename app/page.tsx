@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import Link from 'next/link'
+import GrowthGraphic from '@/components/GrowthGraphic'
 import ChatWidget, { ChatNowButton } from '@/components/ChatWidget'
 
 const industries = [
@@ -78,8 +78,7 @@ export default function Home() {
           </div>
         </div>
         <div style={{ flex: '0 1 400px', maxWidth: '100%', display: 'flex', justifyContent: 'center' }}>
-          <Image src="/robot-black-bg.png" alt="Black Top Digital" width={400} height={400}
-            style={{ objectFit: 'contain', width: '100%', height: 'auto' }} priority />
+          <GrowthGraphic />
         </div>
       </section>
 
