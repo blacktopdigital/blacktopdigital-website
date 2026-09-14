@@ -233,7 +233,7 @@ export default function ChatWidget() {
                     background: '#fff', color: '#000', border: 'none', borderRadius: '8px', padding: '0.95rem',
                     fontWeight: 800, fontSize: '0.9rem', letterSpacing: '0.08em', textTransform: 'uppercase',
                     cursor: step === 'sending' ? 'wait' : 'pointer', opacity: step === 'sending' ? 0.6 : 1, fontFamily: 'inherit',
-                  }}>{step === 'sending' ? 'Sending...' : 'Get a Callback'}</button>
+                  }}>{step === 'sending' ? 'Sending...' : 'Submit'}</button>
                   {!outOfMessages && (
                     <button type="button" onClick={() => setStep('chat')} style={{ ...linkButton, alignSelf: 'center' }}>
                       Back to chat
