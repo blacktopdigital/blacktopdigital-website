@@ -40,6 +40,12 @@ export default function Nav() {
             {l.label}
           </Link>
         ))}
+        <a href="tel:+14798885621" style={{
+          color: '#fff', fontSize: '0.85rem', fontWeight: 700,
+          letterSpacing: '0.05em', textDecoration: 'none', whiteSpace: 'nowrap',
+        }}>
+          (479) 888-5621
+        </a>
         <Link href="/contact" style={{
           background: '#fff', color: '#000', padding: '0.45rem 1.2rem',
           fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.08em',

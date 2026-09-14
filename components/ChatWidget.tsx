@@ -15,7 +15,6 @@ const input: React.CSSProperties = {
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false)
-  const [teaser, setTeaser] = useState(false)
   const [msgs, setMsgs] = useState<Msg[]>([{ from: 'bot', text: GREETING }])
   const [step, setStep] = useState<Step>('message')
   const [draft, setDraft] = useState('')
@@ -28,17 +27,11 @@ export default function ChatWidget() {
   const endRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const t = setTimeout(() => setTeaser(true), 6000)
-    return () => clearTimeout(t)
-  }, [])
-
-  useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [msgs, step, open])
 
   function toggle() {
     setOpen(o => !o)
-    setTeaser(false)
   }
 
   function sendMessage(e: React.FormEvent) {
@@ -69,7 +62,7 @@ export default function ChatWidget() {
       setMsgs(m => [...m, { from: 'bot', text: `Got it, ${name.trim().split(' ')[0]}. We’ll be in touch soon.` }])
       setStep('done')
     } catch {
-      setError('Couldn’t send. Email us at axiom@blacktopdigital.ai.')
+      setError('Couldn’t send. Call or text us at (479) 888-5621.')
       setStep('contact')
     }
   }
@@ -78,8 +71,8 @@ export default function ChatWidget() {
     <>
       {open && (
         <div role="dialog" aria-label="Chat with Black Top Digital" style={{
-          position: 'fixed', right: '16px', bottom: '92px', zIndex: 1000,
-          width: 'min(360px, calc(100vw - 32px))', height: 'min(500px, calc(100vh - 120px))',
+          position: 'fixed', right: '16px', bottom: '100px', zIndex: 1000,
+          width: 'min(400px, calc(100vw - 32px))', height: 'min(580px, calc(100vh - 130px))',
           background: '#0a0a0a', border: '1px solid #1f1f1f', borderRadius: '12px',
           display: 'flex', flexDirection: 'column', overflow: 'hidden',
           boxShadow: '0 20px 60px rgba(0,0,0,0.7)',
@@ -88,7 +81,10 @@ export default function ChatWidget() {
             <img src="/logo.svg" alt="" width={30} height={30} />
             <div>
               <div style={{ color: '#fff', fontWeight: 700, fontSize: '0.92rem' }}>Black Top Digital</div>
-              <div style={{ color: '#555', fontSize: '0.75rem' }}>We usually reply the same day</div>
+              <div style={{ color: '#555', fontSize: '0.78rem' }}>
+                Same-day replies · Or call{' '}
+                <a href="tel:+14798885621" style={{ color: '#aaa', textDecoration: 'none' }}>(479) 888-5621</a>
+              </div>
             </div>
           </div>
 
@@ -97,7 +93,7 @@ export default function ChatWidget() {
               <div key={i} style={{
                 alignSelf: m.from === 'user' ? 'flex-end' : 'flex-start', maxWidth: '85%',
                 background: m.from === 'user' ? '#fff' : '#161616', color: m.from === 'user' ? '#000' : '#ccc',
-                padding: '0.65rem 0.85rem', borderRadius: '10px', fontSize: '0.88rem', lineHeight: 1.5,
+                padding: '0.7rem 0.9rem', borderRadius: '10px', fontSize: '0.95rem', lineHeight: 1.5,
                 whiteSpace: 'pre-wrap', overflowWrap: 'anywhere',
               }}>{m.text}</div>
             ))}
@@ -142,30 +138,31 @@ export default function ChatWidget() {
         </div>
       )}
 
-      {teaser && !open && (
-        <button onClick={toggle} style={{
-          position: 'fixed', right: '88px', bottom: '34px', zIndex: 1000,
-          background: '#fff', color: '#000', border: 'none', borderRadius: '8px',
-          padding: '0.55rem 0.85rem', fontSize: '0.82rem', fontWeight: 600, cursor: 'pointer',
-          boxShadow: '0 8px 24px rgba(0,0,0,0.5)',
-        }}>Questions? Message us</button>
-      )}
-
-      <button onClick={toggle} aria-label={open ? 'Close chat' : 'Open chat'} style={{
+      <style>{`@keyframes btdChatPulse {
+        0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.55), 0 8px 30px rgba(0,0,0,0.6) }
+        70% { box-shadow: 0 0 0 18px rgba(255,255,255,0), 0 8px 30px rgba(0,0,0,0.6) }
+        100% { box-shadow: 0 0 0 0 rgba(255,255,255,0), 0 8px 30px rgba(0,0,0,0.6) }
+      }`}</style>
+      <button onClick={toggle} aria-label={open ? 'Close chat' : 'Chat now'} style={{
         position: 'fixed', right: '16px', bottom: '20px', zIndex: 1000,
-        width: '60px', height: '60px', borderRadius: '50%', border: 'none',
-        background: '#fff', color: '#000', cursor: 'pointer',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        height: '68px', minWidth: '68px', padding: open ? 0 : '0 1.8rem 0 1.4rem',
+        borderRadius: '999px', border: 'none', background: '#fff', color: '#000', cursor: 'pointer',
+        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.65rem',
+        fontWeight: 900, fontSize: '1.05rem', letterSpacing: '0.08em', textTransform: 'uppercase',
         boxShadow: '0 8px 30px rgba(0,0,0,0.6)',
+        animation: open ? 'none' : 'btdChatPulse 2s infinite',
       }}>
         {open ? (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
             <path d="M6 6l12 12M18 6L6 18" />
           </svg>
         ) : (
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
-            <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z" />
-          </svg>
+          <>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round">
+              <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z" />
+            </svg>
+            Chat Now
+          </>
         )}
       </button>
     </>

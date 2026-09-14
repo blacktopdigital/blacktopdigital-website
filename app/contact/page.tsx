@@ -59,7 +59,11 @@ export default function Contact() {
             </div>
 
             <div style={{ marginTop: '3rem', borderTop: '1px solid #111', paddingTop: '1.5rem' }}>
-              <div style={{ fontSize: '0.75rem', color: '#333', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Email Us Directly</div>
+              <div style={{ fontSize: '0.75rem', color: '#333', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Call Us</div>
+              <a href="tel:+14798885621" style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 700, textDecoration: 'none' }}>
+                (479) 888-5621
+              </a>
+              <div style={{ fontSize: '0.75rem', color: '#333', letterSpacing: '0.1em', textTransform: 'uppercase', margin: '1.5rem 0 0.5rem' }}>Email Us Directly</div>
               <a href="mailto:axiom@blacktopdigital.ai" style={{ color: '#666', fontSize: '0.88rem', textDecoration: 'none' }}>
                 axiom@blacktopdigital.ai
               </a>
@@ -149,7 +153,7 @@ export default function Contact() {
       {/* FOOTER */}
       <footer style={{ borderTop: '1px solid #0f0f0f', padding: '2rem', textAlign: 'center', marginTop: '6rem' }}>
         <p style={{ color: '#2a2a2a', fontSize: '0.78rem', letterSpacing: '0.05em' }}>
-          © 2026 Black Top Digital &nbsp;·&nbsp; blacktopdigital.ai &nbsp;·&nbsp; axiom@blacktopdigital.ai
+          © 2026 Black Top Digital &nbsp;·&nbsp; <a href="tel:+14798885621" style={{ color: 'inherit', textDecoration: 'none' }}>(479) 888-5621</a> &nbsp;·&nbsp; axiom@blacktopdigital.ai
         </p>
       </footer>
     </div>

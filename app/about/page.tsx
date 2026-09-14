@@ -149,7 +149,7 @@ export default function About() {
       {/* FOOTER */}
       <footer style={{ borderTop: '1px solid #0f0f0f', padding: '2rem', textAlign: 'center' }}>
         <p style={{ color: '#2a2a2a', fontSize: '0.78rem', letterSpacing: '0.05em' }}>
-          © 2026 Black Top Digital &nbsp;·&nbsp; blacktopdigital.ai &nbsp;·&nbsp; axiom@blacktopdigital.ai
+          © 2026 Black Top Digital &nbsp;·&nbsp; <a href="tel:+14798885621" style={{ color: 'inherit', textDecoration: 'none' }}>(479) 888-5621</a> &nbsp;·&nbsp; axiom@blacktopdigital.ai
         </p>
       </footer>
     </div>

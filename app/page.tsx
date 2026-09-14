@@ -51,6 +51,10 @@ export default function Home() {
               View Services
             </Link>
           </div>
+          <p style={{ color: '#555', fontSize: '0.95rem', marginTop: '1.25rem' }}>
+            Or call us:{' '}
+            <a href="tel:+14798885621" style={{ color: '#fff', fontWeight: 700, textDecoration: 'none' }}>(479) 888-5621</a>
+          </p>
         </div>
         <div style={{ flex: '0 0 400px', display: 'flex', justifyContent: 'center' }}>
           <Image src="/robot-black-bg.png" alt="Black Top Digital AI" width={400} height={400}
@@ -144,7 +148,7 @@ export default function Home() {
       {/* FOOTER */}
       <footer style={{ borderTop: '1px solid #0f0f0f', padding: '2rem', textAlign: 'center' }}>
         <p style={{ color: '#2a2a2a', fontSize: '0.78rem', letterSpacing: '0.05em' }}>
-          © 2026 Black Top Digital &nbsp;·&nbsp; blacktopdigital.ai &nbsp;·&nbsp; axiom@blacktopdigital.ai
+          © 2026 Black Top Digital &nbsp;·&nbsp; <a href="tel:+14798885621" style={{ color: 'inherit', textDecoration: 'none' }}>(479) 888-5621</a> &nbsp;·&nbsp; axiom@blacktopdigital.ai
         </p>
       </footer>
 
