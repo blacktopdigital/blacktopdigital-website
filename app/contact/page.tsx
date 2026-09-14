@@ -46,20 +46,20 @@ export default function Contact() {
           {/* LEFT — copy */}
           <div style={{ flex: '1 1 320px' }}>
             <p style={{ color: '#aaaaaa', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
-              Free Audit
+              Contact Us
             </p>
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 900, lineHeight: 1.05, color: '#fff', marginBottom: '1.5rem' }}>
-              Let&apos;s See Where<br />
-              <span style={{ color: '#9a9a9a' }}>You Stand on Google.</span>
+              Let&apos;s Talk About<br />
+              <span style={{ color: '#9a9a9a' }}>Your Business.</span>
             </h1>
             <p style={{ color: '#b8b8b8', fontSize: '0.95rem', lineHeight: 1.8, marginBottom: '3rem' }}>
-              Fill out the form and we&apos;ll run a full audit of your Google presence — your Business Profile, local rankings, reviews, and competitors. Free, no strings attached.
+              Call or text us at (479) 888-5621, or fill out the form and we&apos;ll get back to you within 1 business day. Tell us a little about your business and we&apos;ll show you exactly how we&apos;d get your phone ringing.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
               {[
                 { t: 'Response Time', b: 'We respond to every inquiry within 1 business day.' },
-                { t: 'No Sales Pressure', b: "The audit is genuinely free. We show you the data — you decide if you want our help." },
+                { t: 'No Sales Pressure', b: "We'll show you where you stand on Google and what we'd do about it. You decide what's next." },
                 { t: 'Industry Experience', b: 'We know truck repair, the trades, and emergency service businesses inside and out, and we bring that same playbook to local businesses of every kind.' },
               ].map(item => (
                 <div key={item.t} style={{ borderTop: '1px solid #111', paddingTop: '1.25rem' }}>
@@ -88,7 +88,7 @@ export default function Contact() {
                 <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>✓</div>
                 <h2 style={{ color: '#fff', fontWeight: 700, fontSize: '1.2rem', marginBottom: '0.75rem' }}>Got it — we&apos;ll be in touch.</h2>
                 <p style={{ color: '#aaaaaa', fontSize: '0.88rem', lineHeight: 1.7 }}>
-                  Expect to hear from us within 1 business day. In the meantime, we&apos;re already pulling your audit.
+                  Expect to hear from us within 1 business day. Need us sooner? Call or text (479) 888-5621.
                 </p>
               </div>
             ) : (
