@@ -1,19 +1,29 @@
-// Home-page chat widget → texts Weston via TextBelt.
+// Chat widget + contact page form → texts Weston via TextBelt.
 // Env: TEXTBELT_KEY, ALERT_PHONE (comma-separated for multiple phones).
-// TextBelt rejects texts containing URLs on unverified keys, so links are stripped.
+// TextBelt rejects texts containing URLs on unverified keys, so links and domains are defused.
 
 const TEXTBELT_URL = 'https://textbelt.com/text'
+// Chat leads fit one SMS segment (1 credit); the fuller contact form gets two (2 credits).
+const SMS_LIMIT = { chat: 140, form: 300 }
 
-// Plain ASCII keeps the text in one cheap SMS segment (curly quotes or emoji force Unicode billing).
+// Plain ASCII keeps the text in cheap GSM segments (curly quotes or emoji force Unicode billing).
 function clean(value: unknown, max: number) {
   return String(value ?? '')
     .replace(/https?:\/\/\S+|www\.\S+/gi, '[link]')
+    .replace(/\b([a-z0-9-]+)\.(com|net|org|biz|info|us|co|io|ai)\b/gi, '$1 dot $2')
     .replace(/[‘’]/g, "'")
     .replace(/[“”]/g, '"')
     .replace(/[^\x20-\x7E\s]/g, '')
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, max)
+}
+
+// Appends "label: tail" only if it fits, trimming the tail to the space left.
+function withTail(base: string, label: string, tail: string, limit: number) {
+  const room = limit - base.length - label.length - 1
+  if (!tail || room < 15) return base
+  return `${base}\n${label}${tail.length > room ? `${tail.slice(0, room - 3)}...` : tail}`
 }
 
 export async function POST(request: Request) {
@@ -27,28 +37,36 @@ export async function POST(request: Request) {
   // Honeypot: bots fill the hidden field. Pretend success and drop it.
   if (body.website) return Response.json({ ok: true })
 
-  const name = clean(body.name, 60)
+  const isForm = body.source === 'form'
+  const name = clean(body.name ?? `${clean(body.firstName, 30)} ${clean(body.lastName, 30)}`, 60)
   const business = clean(body.business, 80)
-  const message = clean(body.message, 400)
+  const message = clean(body.message, 600)
+  const email = clean(body.email, 80).replace('@', ' at ')
+  const city = clean(body.city, 60)
+  const service = clean(body.service, 60)
   const phone = String(body.phone ?? '').replace(/\D/g, '').slice(-10)
   if (!name || phone.length !== 10) {
     return Response.json({ ok: false, error: 'Name and a 10-digit phone are required.' }, { status: 400 })
   }
 
-  const prettyPhone = `(${phone.slice(0, 3)}) ${phone.slice(3, 6)}-${phone.slice(6)}`
   // Business first so Weston knows who he's calling before he dials.
-  // Stay under ~140 chars: one TextBelt credit per text.
-  const base = [
-    'BTD chat lead',
+  const prettyPhone = `(${phone.slice(0, 3)}) ${phone.slice(3, 6)}-${phone.slice(6)}`
+  const lines = [
+    isForm ? 'BTD website form' : 'BTD chat lead',
     `Business: ${business || 'not given'}`,
     `Name: ${name}`,
     `Phone: ${prettyPhone}`,
-  ].join('\n')
-  const room = 140 - base.length - '\nAsked: '.length
-  const asked = message.length > room ? `${message.slice(0, room - 3)}...` : message
-  const text = message && room > 15 ? `${base}\nAsked: ${asked}` : base
+  ]
+  if (isForm) {
+    if (email) lines.push(`Email: ${email}`)
+    if (city) lines.push(`City: ${city}`)
+    if (service) lines.push(`Wants: ${service}`)
+  }
+  const text = isForm
+    ? withTail(lines.join('\n'), 'Notes: ', message, SMS_LIMIT.form)
+    : withTail(lines.join('\n'), 'Asked: ', message, SMS_LIMIT.chat)
 
-  console.log('chat lead', { name, business, phone, message })
+  console.log(isForm ? 'form lead' : 'chat lead', { name, business, phone, email, city, service, message })
 
   const key = process.env.TEXTBELT_KEY
   const alertPhones = (process.env.ALERT_PHONE ?? '').split(',').map(p => p.trim()).filter(Boolean)

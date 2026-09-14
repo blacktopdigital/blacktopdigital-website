@@ -14,14 +14,27 @@ const services = [
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
+  // Texts the lead to Weston through the same route as the chat widget.
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    const fields = Object.fromEntries(new FormData(e.currentTarget))
     setLoading(true)
-    // TODO: wire to email/CRM when SendGrid is configured
-    await new Promise(r => setTimeout(r, 800))
-    setLoading(false)
-    setSubmitted(true)
+    setError('')
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...fields, source: 'form' }),
+      })
+      if (!res.ok) throw new Error()
+      setSubmitted(true)
+    } catch {
+      setError('Couldn’t send. Call or text us at (479) 888-5621.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -47,7 +60,7 @@ export default function Contact() {
               {[
                 { t: 'Response Time', b: 'We respond to every inquiry within 1 business day.' },
                 { t: 'No Sales Pressure', b: "The audit is genuinely free. We show you the data — you decide if you want our help." },
-                { t: 'Industry Experience', b: 'We specialize in truck repair, diesel service, and heavy equipment businesses.' },
+                { t: 'Industry Experience', b: 'We know truck repair, the trades, and emergency service businesses inside and out, and we bring that same playbook to local businesses of every kind.' },
               ].map(item => (
                 <div key={item.t} style={{ borderTop: '1px solid #111', paddingTop: '1.25rem' }}>
                   <div style={{ fontSize: '0.82rem', fontWeight: 700, color: '#fff', marginBottom: '0.4rem' }}>{item.t}</div>
@@ -84,37 +97,37 @@ export default function Contact() {
                 <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                   <div style={{ flex: '1 1 160px', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                     <label style={labelStyle}>First Name *</label>
-                    <input required style={inputStyle} placeholder="John" />
+                    <input required name="firstName" autoComplete="given-name" style={inputStyle} placeholder="John" />
                   </div>
                   <div style={{ flex: '1 1 160px', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                     <label style={labelStyle}>Last Name *</label>
-                    <input required style={inputStyle} placeholder="Smith" />
+                    <input required name="lastName" autoComplete="family-name" style={inputStyle} placeholder="Smith" />
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                   <label style={labelStyle}>Business Name *</label>
-                  <input required style={inputStyle} placeholder="Smith Truck Repair" />
+                  <input required name="business" autoComplete="organization" style={inputStyle} placeholder="Smith Truck Repair" />
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                   <label style={labelStyle}>Business Phone *</label>
-                  <input required type="tel" style={inputStyle} placeholder="(555) 000-0000" />
+                  <input required name="phone" type="tel" autoComplete="tel" style={inputStyle} placeholder="(555) 000-0000" />
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                   <label style={labelStyle}>Email *</label>
-                  <input required type="email" style={inputStyle} placeholder="john@smithtruckrepair.com" />
+                  <input required name="email" type="email" autoComplete="email" style={inputStyle} placeholder="john@smithtruckrepair.com" />
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                   <label style={labelStyle}>City / State *</label>
-                  <input required style={inputStyle} placeholder="Fort Smith, AR" />
+                  <input required name="city" style={inputStyle} placeholder="Fort Smith, AR" />
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                   <label style={labelStyle}>What are you interested in?</label>
-                  <select style={{ ...inputStyle, appearance: 'none' as const }}>
+                  <select name="service" style={{ ...inputStyle, appearance: 'none' as const }}>
                     <option value="">Select a service...</option>
                     {services.map(s => <option key={s} value={s}>{s}</option>)}
                   </select>
@@ -122,9 +135,12 @@ export default function Contact() {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                   <label style={labelStyle}>Anything else we should know?</label>
-                  <textarea rows={4} style={{ ...inputStyle, resize: 'vertical' as const }}
+                  <textarea name="message" rows={4} style={{ ...inputStyle, resize: 'vertical' as const }}
                     placeholder="Tell us about your business, your biggest challenge, or any questions you have." />
                 </div>
+
+                <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: 'absolute', left: '-9999px' }} />
+                {error && <div style={{ color: '#ff8080', fontSize: '0.9rem' }}>{error}</div>}
 
                 <button type="submit" disabled={loading} style={{
                   background: loading ? '#111' : '#fff',
@@ -136,7 +152,7 @@ export default function Contact() {
                   borderRadius: '2px', marginTop: '0.5rem',
                   transition: 'background 0.2s',
                 }}>
-                  {loading ? 'Sending...' : 'Get My Free Audit →'}
+                  {loading ? 'Sending...' : 'Submit'}
                 </button>
 
                 <p style={{ color: '#9a9a9a', fontSize: '0.75rem', textAlign: 'center', lineHeight: 1.5 }}>
