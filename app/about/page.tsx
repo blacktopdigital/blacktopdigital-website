@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'About | Black Top Digital',
-  description: 'Black Top Digital is an AI-powered local marketing agency built for the businesses that keep America moving.',
+  description: 'Black Top Digital is a local marketing agency built for the businesses that keep America moving.',
 }
 
 const values = [
@@ -12,8 +12,8 @@ const values = [
     b: "The truck shops, the mechanics, the tradespeople. The ones who show up at 5am and don't leave until the job is done. They deserve marketing that works as hard as they do.",
   },
   {
-    t: 'AI Without the Fluff',
-    b: "We use AI the way it should be used — to do more in less time, find opportunities faster, and give every client the kind of attention that used to cost 10x more.",
+    t: 'Big-Agency Tools, Hometown Service',
+    b: "We use the same powerful ranking and tracking tools the big agencies use, and we give every client the kind of personal attention that used to cost 10x more.",
   },
   {
     t: 'One Metric: Your Phone',
@@ -64,10 +64,10 @@ export default function About() {
         </div>
         <div style={{ flex: '1 1 400px' }}>
           <p style={{ color: '#aaaaaa', fontSize: '0.95rem', lineHeight: 1.85, marginBottom: '1.5rem' }}>
-            Enterprise companies spend millions on marketing teams, agencies, and software. A local shop owner has none of that. Black Top Digital closes that gap — using AI to give small businesses the same firepower at a fraction of the cost.
+            Enterprise companies spend millions on marketing teams, agencies, and software. A local shop owner has none of that. Black Top Digital closes that gap, giving local businesses the same tools and firepower at a fraction of the cost.
           </p>
           <p style={{ color: '#9a9a9a', fontSize: '0.95rem', lineHeight: 1.85 }}>
-            We target industries where an extra 5 calls a week changes everything. Truck repair. Heavy equipment. Diesel service. The businesses that keep supply chains moving, job sites running, and America working.
+            We work with businesses where an extra 5 calls a week changes everything: truck repair, the trades, emergency services, and local shops of every kind. The businesses that keep supply chains moving, job sites running, and America working.
           </p>
         </div>
       </section>

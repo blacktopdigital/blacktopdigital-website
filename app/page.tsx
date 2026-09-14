@@ -54,15 +54,15 @@ export default function Home() {
       }}>
         <div style={{ flex: '1 1 400px' }}>
           <p style={{ color: '#aaaaaa', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
-            Black Top Digital · AI-Powered Marketing
+            Black Top Digital · Local Marketing
           </p>
           <h1 style={{ fontSize: 'clamp(2.4rem, 5vw, 4.2rem)', fontWeight: 900, lineHeight: 1.05, marginBottom: '1.5rem', color: '#fff' }}>
-            AI-Powered Local Marketing<br />
-            <span style={{ color: '#aaaaaa' }}>That Gets Your</span>{' '}
+            Show Up First on Google.<br />
+            <span style={{ color: '#aaaaaa' }}>Get Your</span>{' '}
             Phone Ringing.
           </h1>
           <p style={{ color: '#b8b8b8', fontSize: '1.05rem', lineHeight: 1.75, marginBottom: '2.5rem', maxWidth: '520px' }}>
-            We use AI to dominate Google rankings and optimize your Business Profile, so when something breaks, customers find you first. Built for truck repair shops, plumbers, electricians, and emergency service businesses.
+            We use powerful tools to keep you at the top of Google and ranked above your competitors, so when customers search for what you do, they find you first and call you. Built for truck repair shops, plumbers, electricians, and every local business that runs on phone calls.
           </p>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <ChatNowButton solid />
@@ -78,7 +78,7 @@ export default function Home() {
           </div>
         </div>
         <div style={{ flex: '0 1 400px', maxWidth: '100%', display: 'flex', justifyContent: 'center' }}>
-          <Image src="/robot-black-bg.png" alt="Black Top Digital AI" width={400} height={400}
+          <Image src="/robot-black-bg.png" alt="Black Top Digital" width={400} height={400}
             style={{ objectFit: 'contain', width: '100%', height: 'auto' }} priority />
         </div>
       </section>
@@ -87,8 +87,8 @@ export default function Home() {
       <div style={{ borderTop: '1px solid #0f0f0f', borderBottom: '1px solid #0f0f0f', padding: '2.5rem 2rem' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', gap: '2rem' }}>
           {[
-            { v: 'AI', l: 'Powered' }, { v: '24/7', l: 'Monitoring' },
-            { v: '100%', l: 'Transparent' }, { v: 'Local', l: 'Focused' },
+            { v: '24/7', l: 'Rank Tracking' }, { v: '100%', l: 'Transparent' },
+            { v: '0', l: 'Long-Term Contracts' }, { v: 'Local', l: 'Focused' },
           ].map(s => (
             <div key={s.l} style={{ textAlign: 'center' }}>
               <div style={{ fontSize: '2rem', fontWeight: 900, color: '#fff' }}>{s.v}</div>
@@ -160,8 +160,8 @@ export default function Home() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 240px), 1fr))', gap: '2.5rem' }}>
             {[
               { t: 'Industry-Specific', b: "We speak your customers' language. We know your industry, your slow seasons, and your competition." },
-              { t: 'Full Transparency', b: "Every keyword, ranking, and review visible in your portal at all times. No mystery invoices." },
-              { t: 'AI-Powered Speed', b: "Our AI runs audits, generates content, and monitors rankings 24/7 — faster than any human team." },
+              { t: 'Full Transparency', b: "A plain-English report every month showing where you rank and how your reviews are growing. No mystery invoices." },
+              { t: 'Always a Step Ahead', b: "We watch your rankings and your competitors around the clock and move fast when something changes, so you stay on top." },
               { t: 'Results or Nothing', b: "We focus on one metric: calls to your business. Not impressions. Not traffic. Calls." },
             ].map(item => (
               <div key={item.t} style={{ borderTop: '1px solid #111', paddingTop: '1.5rem' }}>

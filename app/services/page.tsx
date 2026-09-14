@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Services | Black Top Digital',
-  description: 'AI-powered local SEO, Google Business Profile optimization, reputation management, and website design for truck repair shops, plumbers, electricians, and emergency service businesses.',
+  description: 'Local SEO, Google Business Profile optimization, reputation management, and website design that put local businesses ahead of their competitors on Google.',
 }
 
 const packages = [

@@ -3,9 +3,9 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 
 export const metadata: Metadata = {
-  title: "Black Top Digital | AI-Powered Local Marketing That Gets Your Phone Ringing",
-  description: "Black Top Digital uses AI to dominate local Google rankings, optimize your Google Business Profile, and build websites that convert — for truck repair shops, plumbers, electricians, and emergency service businesses.",
-  keywords: "local SEO, Google Business Profile optimization, truck repair marketing, plumber SEO, electrician SEO, emergency service marketing, AI marketing",
+  title: "Black Top Digital | Show Up First on Google and Get Your Phone Ringing",
+  description: "Black Top Digital puts local businesses at the top of Google, ahead of their competitors: Google Business Profile optimization, local SEO, reviews, and websites that turn searches into phone calls.",
+  keywords: "local SEO, Google Business Profile optimization, local marketing agency, truck repair marketing, plumber SEO, electrician SEO, emergency service marketing",
 };
 
 // OpenAI (ChatGPT) ads pixel, as supplied by the ads dashboard.
