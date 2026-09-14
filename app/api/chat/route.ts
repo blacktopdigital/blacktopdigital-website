@@ -52,7 +52,7 @@ export async function POST(request: Request) {
   // Business first so Weston knows who he's calling before he dials.
   const prettyPhone = `(${phone.slice(0, 3)}) ${phone.slice(3, 6)}-${phone.slice(6)}`
   const lines = [
-    isForm ? 'BTD website form' : 'BTD chat lead',
+    isForm ? 'BTD website form' : body.source === 'start' ? 'BTD get started form' : 'BTD chat lead',
     `Business: ${business || 'not given'}`,
     `Name: ${name}`,
     `Phone: ${prettyPhone}`,

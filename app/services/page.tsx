@@ -81,7 +81,7 @@ export default function Services() {
                   </li>
                 ))}
               </ul>
-              <Link href="/contact" style={{
+              <Link href="/get-started" style={{
                 display: 'block', textAlign: 'center', border: '1px solid #1a1a1a',
                 color: '#c4c4c4', padding: '0.75rem', fontSize: '0.8rem',
                 letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none', borderRadius: '2px',

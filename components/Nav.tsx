@@ -64,7 +64,7 @@ export default function Nav() {
           }}>
             (479) 888-5621
           </a>
-          <Link href="/contact" style={{
+          <Link href="/get-started" style={{
             background: '#fff', color: '#000', padding: '0.45rem 1.2rem',
             fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.08em',
             textTransform: 'uppercase', textDecoration: 'none', borderRadius: '2px',
@@ -101,7 +101,7 @@ export default function Nav() {
           <a href="tel:+14798885621" onClick={close} style={{ ...menuLink, fontWeight: 800, borderBottom: 'none' }}>
             Call (479) 888-5621
           </a>
-          <Link href="/contact" onClick={close} style={{
+          <Link href="/get-started" onClick={close} style={{
             background: '#fff', color: '#000', textAlign: 'center', padding: '0.95rem',
             fontWeight: 800, fontSize: '0.95rem', letterSpacing: '0.08em', textTransform: 'uppercase',
             textDecoration: 'none', borderRadius: '2px', marginTop: '0.5rem',
