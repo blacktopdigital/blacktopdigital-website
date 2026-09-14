@@ -32,11 +32,13 @@ export async function POST(request: Request) {
   }
 
   const prettyPhone = `(${phone.slice(0, 3)}) ${phone.slice(3, 6)}-${phone.slice(6)}`
+  // Business first so Weston knows who he's calling before he dials.
   const text = [
-    'BTD website chat - wants more info',
-    business ? `${name} - ${business}` : name,
-    prettyPhone,
-    message && `"${message}"`,
+    'BTD chat lead - wants more info',
+    `Business: ${business || 'not given'}`,
+    `Name: ${name}`,
+    `Phone: ${prettyPhone}`,
+    message && `Said: "${message}"`,
   ].filter(Boolean).join('\n')
 
   console.log('chat lead', { name, business, phone, message })
