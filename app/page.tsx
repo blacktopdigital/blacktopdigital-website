@@ -1,13 +1,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import ChatWidget from '@/components/ChatWidget'
 
 const services = [
-  { title: 'Google Business Profile', desc: 'Dominate the local map pack. We optimize and manage your GBP so your business shows up first when customers search.', price: '$299/mo' },
-  { title: 'Local SEO', desc: 'Rank higher on Google for the searches that matter. Keywords, content, and citations built for your city.', price: '$599/mo' },
-  { title: 'Google Ads Management', desc: 'Every dollar tracked. We build and manage campaigns that drive calls — not just clicks.', price: '$499/mo + spend' },
-  { title: 'Google Local Services Ads', desc: 'Show up at the very top of Google as a verified local business. Pay per lead, not per click.', price: '$399/mo' },
-  { title: 'Website Design & Build', desc: 'A site built to convert — fast, mobile-first, and engineered to rank. No templates, no shortcuts.', price: '$1,500 one-time' },
-  { title: 'Reputation Management', desc: 'Automated review generation and monitoring. More 5-star reviews, fewer surprises.', price: '$199/mo' },
+  { title: 'Google Business Profile', desc: 'Dominate the local map pack. We optimize and manage your GBP so your business shows up first when customers search.' },
+  { title: 'Local SEO', desc: 'Rank higher on Google for the searches that matter. Keywords, content, and citations built for your city.' },
+  { title: 'Google Ads Management', desc: 'Every dollar tracked. We build and manage campaigns that drive calls — not just clicks.' },
+  { title: 'Google Local Services Ads', desc: 'Show up at the very top of Google as a verified local business. Pay per lead, not per click.' },
+  { title: 'Website Design & Build', desc: 'A site built to convert — fast, mobile-first, and engineered to rank. No templates, no shortcuts.' },
+  { title: 'Reputation Management', desc: 'Automated review generation and monitoring. More 5-star reviews, fewer surprises.' },
 ]
 
 export default function Home() {
@@ -83,8 +84,7 @@ export default function Home() {
             {services.map(s => (
               <div key={s.title} style={{ background: '#000', padding: '2rem' }}>
                 <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#fff', marginBottom: '0.6rem' }}>{s.title}</h3>
-                <p style={{ color: '#444', fontSize: '0.88rem', lineHeight: 1.65, marginBottom: '1.25rem' }}>{s.desc}</p>
-                <div style={{ fontSize: '0.82rem', fontWeight: 700, color: '#666' }}>From {s.price}</div>
+                <p style={{ color: '#444', fontSize: '0.88rem', lineHeight: 1.65 }}>{s.desc}</p>
               </div>
             ))}
           </div>
@@ -93,7 +93,7 @@ export default function Home() {
               border: '1px solid #1a1a1a', color: '#777', padding: '0.85rem 2.5rem',
               fontSize: '0.82rem', fontWeight: 600, letterSpacing: '0.1em',
               textTransform: 'uppercase', textDecoration: 'none', borderRadius: '2px', display: 'inline-block',
-            }}>See Full Pricing →</Link>
+            }}>See All Services →</Link>
           </div>
         </div>
       </section>
@@ -147,6 +147,8 @@ export default function Home() {
           © 2026 Black Top Digital &nbsp;·&nbsp; blacktopdigital.ai &nbsp;·&nbsp; axiom@blacktopdigital.ai
         </p>
       </footer>
+
+      <ChatWidget />
     </div>
   )
 }
