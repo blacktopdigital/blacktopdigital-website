@@ -34,14 +34,14 @@ export default function Contact() {
 
           {/* LEFT — copy */}
           <div style={{ flex: '1 1 320px' }}>
-            <p style={{ color: '#444', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
+            <p style={{ color: '#aaaaaa', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
               Free Audit
             </p>
             <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 900, lineHeight: 1.05, color: '#fff', marginBottom: '1.5rem' }}>
               Let&apos;s See Where<br />
-              <span style={{ color: '#333' }}>You Stand on Google.</span>
+              <span style={{ color: '#9a9a9a' }}>You Stand on Google.</span>
             </h1>
-            <p style={{ color: '#555', fontSize: '0.95rem', lineHeight: 1.8, marginBottom: '3rem' }}>
+            <p style={{ color: '#b8b8b8', fontSize: '0.95rem', lineHeight: 1.8, marginBottom: '3rem' }}>
               Fill out the form and we&apos;ll run a full audit of your Google presence — your Business Profile, local rankings, reviews, and competitors. Free, no strings attached.
             </p>
 
@@ -53,18 +53,18 @@ export default function Contact() {
               ].map(item => (
                 <div key={item.t} style={{ borderTop: '1px solid #111', paddingTop: '1.25rem' }}>
                   <div style={{ fontSize: '0.82rem', fontWeight: 700, color: '#fff', marginBottom: '0.4rem' }}>{item.t}</div>
-                  <div style={{ fontSize: '0.83rem', color: '#444', lineHeight: 1.6 }}>{item.b}</div>
+                  <div style={{ fontSize: '0.83rem', color: '#aaaaaa', lineHeight: 1.6 }}>{item.b}</div>
                 </div>
               ))}
             </div>
 
             <div style={{ marginTop: '3rem', borderTop: '1px solid #111', paddingTop: '1.5rem' }}>
-              <div style={{ fontSize: '0.75rem', color: '#333', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Call Us</div>
+              <div style={{ fontSize: '0.75rem', color: '#9a9a9a', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Call Us</div>
               <a href="tel:+14798885621" style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 700, textDecoration: 'none' }}>
                 (479) 888-5621
               </a>
-              <div style={{ fontSize: '0.75rem', color: '#333', letterSpacing: '0.1em', textTransform: 'uppercase', margin: '1.5rem 0 0.5rem' }}>Email Us Directly</div>
-              <a href="mailto:axiom@blacktopdigital.ai" style={{ color: '#666', fontSize: '0.88rem', textDecoration: 'none' }}>
+              <div style={{ fontSize: '0.75rem', color: '#9a9a9a', letterSpacing: '0.1em', textTransform: 'uppercase', margin: '1.5rem 0 0.5rem' }}>Email Us Directly</div>
+              <a href="mailto:axiom@blacktopdigital.ai" style={{ color: '#c4c4c4', fontSize: '0.88rem', textDecoration: 'none' }}>
                 axiom@blacktopdigital.ai
               </a>
             </div>
@@ -76,7 +76,7 @@ export default function Contact() {
               <div style={{ border: '1px solid #111', padding: '4rem 3rem', textAlign: 'center' }}>
                 <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>✓</div>
                 <h2 style={{ color: '#fff', fontWeight: 700, fontSize: '1.2rem', marginBottom: '0.75rem' }}>Got it — we&apos;ll be in touch.</h2>
-                <p style={{ color: '#444', fontSize: '0.88rem', lineHeight: 1.7 }}>
+                <p style={{ color: '#aaaaaa', fontSize: '0.88rem', lineHeight: 1.7 }}>
                   Expect to hear from us within 1 business day. In the meantime, we&apos;re already pulling your audit.
                 </p>
               </div>
@@ -141,7 +141,7 @@ export default function Contact() {
                   {loading ? 'Sending...' : 'Get My Free Audit →'}
                 </button>
 
-                <p style={{ color: '#2a2a2a', fontSize: '0.75rem', textAlign: 'center', lineHeight: 1.5 }}>
+                <p style={{ color: '#9a9a9a', fontSize: '0.75rem', textAlign: 'center', lineHeight: 1.5 }}>
                   No spam. No contracts. Just a free look at your Google presence.
                 </p>
               </form>
@@ -152,7 +152,7 @@ export default function Contact() {
 
       {/* FOOTER */}
       <footer style={{ borderTop: '1px solid #0f0f0f', padding: '2rem', textAlign: 'center', marginTop: '6rem' }}>
-        <p style={{ color: '#2a2a2a', fontSize: '0.78rem', letterSpacing: '0.05em' }}>
+        <p style={{ color: '#9a9a9a', fontSize: '0.78rem', letterSpacing: '0.05em' }}>
           © 2026 Black Top Digital &nbsp;·&nbsp; <a href="tel:+14798885621" style={{ color: 'inherit', textDecoration: 'none' }}>(479) 888-5621</a> &nbsp;·&nbsp; axiom@blacktopdigital.ai
         </p>
       </footer>
@@ -161,7 +161,7 @@ export default function Contact() {
 }
 
 const labelStyle: React.CSSProperties = {
-  fontSize: '0.75rem', color: '#444',
+  fontSize: '0.75rem', color: '#aaaaaa',
   letterSpacing: '0.08em', textTransform: 'uppercase',
 }
 

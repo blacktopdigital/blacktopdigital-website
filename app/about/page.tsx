@@ -38,14 +38,14 @@ export default function About() {
 
       {/* HERO */}
       <section style={{ padding: '8rem 2rem 6rem', maxWidth: '900px', margin: '0 auto' }}>
-        <p style={{ color: '#444', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
+        <p style={{ color: '#aaaaaa', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
           About Us
         </p>
         <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: 900, lineHeight: 1.05, color: '#fff', marginBottom: '2rem' }}>
           We Built an Agency<br />
-          <span style={{ color: '#333' }}>That Actually Fights For You.</span>
+          <span style={{ color: '#9a9a9a' }}>That Actually Fights For You.</span>
         </h1>
-        <p style={{ color: '#555', fontSize: '1.1rem', lineHeight: 1.8, maxWidth: '620px' }}>
+        <p style={{ color: '#b8b8b8', fontSize: '1.1rem', lineHeight: 1.8, maxWidth: '620px' }}>
           Black Top Digital was built from a simple observation: the businesses that do the hardest, most essential work — the truck shops, the repair yards, the service crews — are almost always invisible online. Not because their work isn't great. Because nobody showed them how to fix it.
         </p>
       </section>
@@ -56,17 +56,17 @@ export default function About() {
       {/* MISSION */}
       <section style={{ padding: '6rem 2rem', maxWidth: '1200px', margin: '0 auto', display: 'flex', gap: '6rem', flexWrap: 'wrap', alignItems: 'center' }}>
         <div style={{ flex: '1 1 320px' }}>
-          <p style={{ color: '#444', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>Mission</p>
+          <p style={{ color: '#aaaaaa', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>Mission</p>
           <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.6rem)', fontWeight: 900, color: '#fff', lineHeight: 1.1 }}>
             Level the playing field<br />
-            <span style={{ color: '#333' }}>for local business.</span>
+            <span style={{ color: '#9a9a9a' }}>for local business.</span>
           </h2>
         </div>
         <div style={{ flex: '1 1 400px' }}>
-          <p style={{ color: '#444', fontSize: '0.95rem', lineHeight: 1.85, marginBottom: '1.5rem' }}>
+          <p style={{ color: '#aaaaaa', fontSize: '0.95rem', lineHeight: 1.85, marginBottom: '1.5rem' }}>
             Enterprise companies spend millions on marketing teams, agencies, and software. A local shop owner has none of that. Black Top Digital closes that gap — using AI to give small businesses the same firepower at a fraction of the cost.
           </p>
-          <p style={{ color: '#333', fontSize: '0.95rem', lineHeight: 1.85 }}>
+          <p style={{ color: '#9a9a9a', fontSize: '0.95rem', lineHeight: 1.85 }}>
             We target industries where an extra 5 calls a week changes everything. Truck repair. Heavy equipment. Diesel service. The businesses that keep supply chains moving, job sites running, and America working.
           </p>
         </div>
@@ -75,7 +75,7 @@ export default function About() {
       {/* VALUES */}
       <section style={{ padding: '6rem 2rem', background: '#030303', borderTop: '1px solid #0f0f0f' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <p style={{ color: '#444', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>How We Think</p>
+          <p style={{ color: '#aaaaaa', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>How We Think</p>
           <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', fontWeight: 900, color: '#fff', marginBottom: '3.5rem' }}>
             The Principles We Run On.
           </h2>
@@ -83,7 +83,7 @@ export default function About() {
             {values.map(v => (
               <div key={v.t} style={{ borderTop: '1px solid #111', paddingTop: '1.5rem' }}>
                 <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#fff', marginBottom: '0.75rem' }}>{v.t}</h3>
-                <p style={{ color: '#444', fontSize: '0.87rem', lineHeight: 1.7 }}>{v.b}</p>
+                <p style={{ color: '#aaaaaa', fontSize: '0.87rem', lineHeight: 1.7 }}>{v.b}</p>
               </div>
             ))}
           </div>
@@ -93,16 +93,16 @@ export default function About() {
       {/* PROCESS */}
       <section style={{ padding: '6rem 2rem' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <p style={{ color: '#444', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>How It Works</p>
+          <p style={{ color: '#aaaaaa', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>How It Works</p>
           <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', fontWeight: 900, color: '#fff', marginBottom: '3.5rem' }}>
-            From Zero to Ranking.<br /><span style={{ color: '#333' }}>Here&apos;s the Process.</span>
+            From Zero to Ranking.<br /><span style={{ color: '#9a9a9a' }}>Here&apos;s the Process.</span>
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '1px', background: '#0f0f0f' }}>
             {process.map(step => (
               <div key={step.n} style={{ background: '#000', padding: '2.5rem' }}>
-                <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#111', marginBottom: '1rem', fontVariantNumeric: 'tabular-nums' }}>{step.n}</div>
+                <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#555', marginBottom: '1rem', fontVariantNumeric: 'tabular-nums' }}>{step.n}</div>
                 <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#fff', marginBottom: '0.6rem' }}>{step.t}</h3>
-                <p style={{ color: '#444', fontSize: '0.87rem', lineHeight: 1.7 }}>{step.b}</p>
+                <p style={{ color: '#aaaaaa', fontSize: '0.87rem', lineHeight: 1.7 }}>{step.b}</p>
               </div>
             ))}
           </div>
@@ -120,7 +120,7 @@ export default function About() {
           ].map(s => (
             <div key={s.l} style={{ textAlign: 'center', maxWidth: '180px' }}>
               <div style={{ fontSize: '2.2rem', fontWeight: 900, color: '#fff' }}>{s.v}</div>
-              <div style={{ fontSize: '0.72rem', color: '#444', lineHeight: 1.5, marginTop: '0.4rem', letterSpacing: '0.05em' }}>{s.l}</div>
+              <div style={{ fontSize: '0.72rem', color: '#aaaaaa', lineHeight: 1.5, marginTop: '0.4rem', letterSpacing: '0.05em' }}>{s.l}</div>
             </div>
           ))}
         </div>
@@ -129,11 +129,11 @@ export default function About() {
       {/* CTA */}
       <section style={{ padding: '8rem 2rem', textAlign: 'center' }}>
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-          <p style={{ color: '#333', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Let&apos;s Talk</p>
+          <p style={{ color: '#9a9a9a', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Let&apos;s Talk</p>
           <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', marginBottom: '1.5rem', lineHeight: 1.1 }}>
             Ready to See What&apos;s Possible?
           </h2>
-          <p style={{ color: '#444', fontSize: '0.95rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
+          <p style={{ color: '#aaaaaa', fontSize: '0.95rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
             Start with a free audit. No commitment, no pressure — just a clear look at your Google presence and what we&apos;d do to grow it.
           </p>
           <Link href="/contact" style={{
@@ -148,7 +148,7 @@ export default function About() {
 
       {/* FOOTER */}
       <footer style={{ borderTop: '1px solid #0f0f0f', padding: '2rem', textAlign: 'center' }}>
-        <p style={{ color: '#2a2a2a', fontSize: '0.78rem', letterSpacing: '0.05em' }}>
+        <p style={{ color: '#9a9a9a', fontSize: '0.78rem', letterSpacing: '0.05em' }}>
           © 2026 Black Top Digital &nbsp;·&nbsp; <a href="tel:+14798885621" style={{ color: 'inherit', textDecoration: 'none' }}>(479) 888-5621</a> &nbsp;·&nbsp; axiom@blacktopdigital.ai
         </p>
       </footer>

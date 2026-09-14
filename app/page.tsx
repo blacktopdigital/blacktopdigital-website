@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import ChatWidget from '@/components/ChatWidget'
+import ChatWidget, { ChatNowButton } from '@/components/ChatWidget'
 
 const services = [
   { title: 'Google Business Profile', desc: 'Dominate the local map pack. We optimize and manage your GBP so your business shows up first when customers search.' },
@@ -22,15 +22,15 @@ export default function Home() {
         gap: '4rem', flexWrap: 'wrap',
       }}>
         <div style={{ flex: '1 1 400px' }}>
-          <p style={{ color: '#444', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
+          <p style={{ color: '#aaaaaa', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
             Black Top Digital · AI-Powered Marketing
           </p>
           <h1 style={{ fontSize: 'clamp(2.4rem, 5vw, 4.2rem)', fontWeight: 900, lineHeight: 1.05, marginBottom: '1.5rem', color: '#fff' }}>
             AI-Powered Local Marketing<br />
-            <span style={{ color: '#444' }}>That Gets Your</span>{' '}
+            <span style={{ color: '#aaaaaa' }}>That Gets Your</span>{' '}
             Phone Ringing.
           </h1>
-          <p style={{ color: '#555', fontSize: '1.05rem', lineHeight: 1.75, marginBottom: '2.5rem', maxWidth: '500px' }}>
+          <p style={{ color: '#b8b8b8', fontSize: '1.05rem', lineHeight: 1.75, marginBottom: '2.5rem', maxWidth: '500px' }}>
             We use artificial intelligence to dominate Google rankings, optimize your Business Profile, and run ads that actually convert — for local businesses ready to grow.
           </p>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
@@ -42,8 +42,9 @@ export default function Home() {
             }}>
               Get a Free Audit
             </Link>
+            <ChatNowButton />
             <Link href="/services" style={{
-              border: '1px solid #2a2a2a', color: '#aaa', padding: '0.9rem 2rem',
+              border: '1px solid #2a2a2a', color: '#e0e0e0', padding: '0.9rem 2rem',
               fontWeight: 600, fontSize: '0.85rem', letterSpacing: '0.1em',
               textTransform: 'uppercase', textDecoration: 'none', borderRadius: '2px',
               display: 'inline-block',
@@ -51,7 +52,7 @@ export default function Home() {
               View Services
             </Link>
           </div>
-          <p style={{ color: '#555', fontSize: '0.95rem', marginTop: '1.25rem' }}>
+          <p style={{ color: '#b8b8b8', fontSize: '0.95rem', marginTop: '1.25rem' }}>
             Or call us:{' '}
             <a href="tel:+14798885621" style={{ color: '#fff', fontWeight: 700, textDecoration: 'none' }}>(479) 888-5621</a>
           </p>
@@ -71,7 +72,7 @@ export default function Home() {
           ].map(s => (
             <div key={s.l} style={{ textAlign: 'center' }}>
               <div style={{ fontSize: '2rem', fontWeight: 900, color: '#fff' }}>{s.v}</div>
-              <div style={{ fontSize: '0.7rem', color: '#444', letterSpacing: '0.15em', textTransform: 'uppercase', marginTop: '0.3rem' }}>{s.l}</div>
+              <div style={{ fontSize: '0.7rem', color: '#aaaaaa', letterSpacing: '0.15em', textTransform: 'uppercase', marginTop: '0.3rem' }}>{s.l}</div>
             </div>
           ))}
         </div>
@@ -80,21 +81,21 @@ export default function Home() {
       {/* SERVICES GRID */}
       <section style={{ padding: '6rem 2rem' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <p style={{ color: '#444', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>What We Do</p>
+          <p style={{ color: '#aaaaaa', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>What We Do</p>
           <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', fontWeight: 900, color: '#fff', marginBottom: '3rem' }}>
-            Everything Your Business Needs<br /><span style={{ color: '#333' }}>to Own Google.</span>
+            Everything Your Business Needs<br /><span style={{ color: '#9a9a9a' }}>to Own Google.</span>
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1px', background: '#0f0f0f' }}>
             {services.map(s => (
               <div key={s.title} style={{ background: '#000', padding: '2rem' }}>
                 <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#fff', marginBottom: '0.6rem' }}>{s.title}</h3>
-                <p style={{ color: '#444', fontSize: '0.88rem', lineHeight: 1.65 }}>{s.desc}</p>
+                <p style={{ color: '#aaaaaa', fontSize: '0.88rem', lineHeight: 1.65 }}>{s.desc}</p>
               </div>
             ))}
           </div>
           <div style={{ marginTop: '2.5rem', textAlign: 'center' }}>
             <Link href="/services" style={{
-              border: '1px solid #1a1a1a', color: '#777', padding: '0.85rem 2.5rem',
+              border: '1px solid #1a1a1a', color: '#cccccc', padding: '0.85rem 2.5rem',
               fontSize: '0.82rem', fontWeight: 600, letterSpacing: '0.1em',
               textTransform: 'uppercase', textDecoration: 'none', borderRadius: '2px', display: 'inline-block',
             }}>See All Services →</Link>
@@ -105,9 +106,9 @@ export default function Home() {
       {/* WHY US */}
       <section style={{ padding: '6rem 2rem', background: '#030303', borderTop: '1px solid #0f0f0f' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <p style={{ color: '#444', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>Why Black Top Digital</p>
+          <p style={{ color: '#aaaaaa', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>Why Black Top Digital</p>
           <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', fontWeight: 900, color: '#fff', marginBottom: '3rem' }}>
-            We Don&apos;t Just Report Numbers.<br /><span style={{ color: '#333' }}>We Move Them.</span>
+            We Don&apos;t Just Report Numbers.<br /><span style={{ color: '#9a9a9a' }}>We Move Them.</span>
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '2.5rem' }}>
             {[
@@ -118,7 +119,7 @@ export default function Home() {
             ].map(item => (
               <div key={item.t} style={{ borderTop: '1px solid #111', paddingTop: '1.5rem' }}>
                 <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#fff', marginBottom: '0.6rem' }}>{item.t}</h3>
-                <p style={{ color: '#444', fontSize: '0.87rem', lineHeight: 1.65 }}>{item.b}</p>
+                <p style={{ color: '#aaaaaa', fontSize: '0.87rem', lineHeight: 1.65 }}>{item.b}</p>
               </div>
             ))}
           </div>
@@ -128,11 +129,11 @@ export default function Home() {
       {/* CTA BANNER */}
       <section style={{ padding: '8rem 2rem', textAlign: 'center' }}>
         <div style={{ maxWidth: '700px', margin: '0 auto' }}>
-          <p style={{ color: '#333', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Ready to Grow?</p>
+          <p style={{ color: '#9a9a9a', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Ready to Grow?</p>
           <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 900, color: '#fff', marginBottom: '1.5rem', lineHeight: 1.1 }}>
             Your Competitors Are Already<br />on Page One.
           </h2>
-          <p style={{ color: '#444', fontSize: '1rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
+          <p style={{ color: '#aaaaaa', fontSize: '1rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
             Get a free audit and see exactly where you stand — and what it will take to dominate your market.
           </p>
           <Link href="/contact" style={{
@@ -146,8 +147,8 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer style={{ borderTop: '1px solid #0f0f0f', padding: '2rem', textAlign: 'center' }}>
-        <p style={{ color: '#2a2a2a', fontSize: '0.78rem', letterSpacing: '0.05em' }}>
+      <footer style={{ borderTop: '1px solid #0f0f0f', padding: '2rem 2rem 7rem', textAlign: 'center' }}>
+        <p style={{ color: '#9a9a9a', fontSize: '0.78rem', letterSpacing: '0.05em' }}>
           © 2026 Black Top Digital &nbsp;·&nbsp; <a href="tel:+14798885621" style={{ color: 'inherit', textDecoration: 'none' }}>(479) 888-5621</a> &nbsp;·&nbsp; axiom@blacktopdigital.ai
         </p>
       </footer>

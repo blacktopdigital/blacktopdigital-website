@@ -31,11 +31,11 @@ export default function Nav() {
       <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
         {links.map(l => (
           <Link key={l.href} href={l.href} style={{
-            color: '#888', fontSize: '0.85rem', letterSpacing: '0.08em',
+            color: '#d4d4d4', fontSize: '0.85rem', letterSpacing: '0.08em',
             textTransform: 'uppercase', textDecoration: 'none', transition: 'color 0.2s',
           }}
             onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
-            onMouseLeave={e => (e.currentTarget.style.color = '#888')}
+            onMouseLeave={e => (e.currentTarget.style.color = '#d4d4d4')}
           >
             {l.label}
           </Link>
@@ -57,7 +57,7 @@ export default function Nav() {
         >
           Get Started
         </Link>
-        <Link href="/portal" style={{ color: '#444', fontSize: '0.75rem', textDecoration: 'none', letterSpacing: '0.05em' }}>
+        <Link href="/portal" style={{ color: '#aaaaaa', fontSize: '0.75rem', textDecoration: 'none', letterSpacing: '0.05em' }}>
           Portal
         </Link>
       </div>
