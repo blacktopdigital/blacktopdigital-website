@@ -45,7 +45,8 @@ export default function GrowthGraphic() {
         </filter>
       </defs>
 
-      <circle cx="360" cy="70" r="120" fill="url(#gg-halo)" />
+      {/* Kept inside the viewBox so the glow fades out instead of clipping to a square. */}
+      <circle cx="300" cy="125" r="115" fill="url(#gg-halo)" />
 
       {[60, 120, 180, 240, 300].map(y => (
         <line key={y} x1="20" x2="400" y1={y} y2={y} stroke="#161616" strokeWidth="1" />
