@@ -18,7 +18,7 @@ export default function GetStarted() {
           <span style={{ color: '#9a9a9a' }}>We&apos;ll Show You How We Can Help.</span>
         </h1>
         <p style={{ color: '#b8b8b8', fontSize: '1rem', lineHeight: 1.75, marginBottom: '2.5rem' }}>
-          Leave your name and number and we&apos;ll reach out within 1 business day. No pressure, and no long-term contracts.
+          Leave your name and number and we&apos;ll reach out shortly. No pressure, and no long-term contracts.
         </p>
 
         <GetStartedForm />
