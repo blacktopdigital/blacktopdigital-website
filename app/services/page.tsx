@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Services | Black Top Digital',
-  description: 'AI-powered local SEO, Google Ads, Google Business Profile optimization, and website design for local businesses. Custom plans built around your market.',
+  description: 'AI-powered local SEO, Google Business Profile optimization, reputation management, and website design for truck repair shops, plumbers, electricians, and emergency service businesses.',
 }
 
 const packages = [
@@ -29,30 +29,6 @@ const packages = [
       'Monthly blog / location page content',
       'Google Search Console monitoring',
       'Ranking progress report',
-    ],
-  },
-  {
-    name: 'Google Ads Management',
-    desc: 'Pay-per-click campaigns built to generate calls, not just burn budget.',
-    includes: [
-      'Campaign strategy and setup',
-      'Keyword targeting and negative lists',
-      'Ad copy creation and A/B testing',
-      'Bid management and optimization',
-      'Call tracking integration',
-      'Weekly performance review',
-    ],
-  },
-  {
-    name: 'Google Local Services Ads',
-    desc: 'Show up above all other ads as a Google Guaranteed business. Pay per lead only.',
-    includes: [
-      'LSA account setup and verification',
-      'Google Guarantee badge setup',
-      'Budget and bid management',
-      'Lead quality monitoring',
-      'Dispute management for bad leads',
-      'Monthly lead report',
     ],
   },
   {
@@ -93,7 +69,7 @@ export default function Services() {
           Every market is different, so every plan is quoted to fit yours. No long-term contracts. Every service includes a monthly report and direct access to your account manager.
         </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '1px', background: '#0f0f0f' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 420px), 1fr))', gap: '1px', background: '#0f0f0f' }}>
           {packages.map(p => (
             <div key={p.name} style={{ background: '#000', padding: '2.5rem' }}>
               <h2 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#fff', marginBottom: '1rem' }}>{p.name}</h2>
@@ -119,7 +95,7 @@ export default function Services() {
           <p style={{ color: '#aaaaaa', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>All-In-One</p>
           <h2 style={{ fontSize: '1.8rem', fontWeight: 900, color: '#fff', marginBottom: '1rem' }}>Full Growth Package</h2>
           <p style={{ color: '#b8b8b8', maxWidth: '500px', margin: '0 auto 2rem', lineHeight: 1.7 }}>
-            GBP Management + Local SEO + Google Ads + Reputation Management. Everything working together. Maximum results.
+            GBP Management + Local SEO + Reputation Management. Everything working together. Maximum results.
           </p>
           <Link href="/contact" style={{
             background: '#fff', color: '#000', padding: '1rem 3rem',

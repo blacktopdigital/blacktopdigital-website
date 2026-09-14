@@ -5,8 +5,6 @@ import type { FormEvent } from 'react'
 const services = [
   'Google Business Profile Management',
   'Local SEO',
-  'Google Ads Management',
-  'Google Local Services Ads',
   'Reputation Management',
   'Website Design & Build',
   'Full Growth Package',

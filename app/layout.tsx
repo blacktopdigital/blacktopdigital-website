@@ -4,8 +4,8 @@ import Nav from "@/components/Nav";
 
 export const metadata: Metadata = {
   title: "Black Top Digital | AI-Powered Local Marketing That Gets Your Phone Ringing",
-  description: "Black Top Digital uses AI to dominate local Google rankings, optimize your Google Business Profile, manage ads, and build websites that convert — for local businesses ready to grow.",
-  keywords: "local SEO, Google Business Profile optimization, Google Ads management, local digital marketing agency, AI marketing",
+  description: "Black Top Digital uses AI to dominate local Google rankings, optimize your Google Business Profile, and build websites that convert — for truck repair shops, plumbers, electricians, and emergency service businesses.",
+  keywords: "local SEO, Google Business Profile optimization, truck repair marketing, plumber SEO, electrician SEO, emergency service marketing, AI marketing",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

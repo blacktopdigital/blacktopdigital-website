@@ -24,10 +24,11 @@ function ChatIcon({ size }: { size: number }) {
   )
 }
 
-export function ChatNowButton() {
+export function ChatNowButton({ solid = false }: { solid?: boolean }) {
   return (
     <button onClick={() => window.dispatchEvent(new Event(OPEN_EVENT))} style={{
-      border: '2px solid #fff', background: 'transparent', color: '#fff', padding: '0.8rem 1.8rem',
+      border: '2px solid #fff', background: solid ? '#fff' : 'transparent', color: solid ? '#000' : '#fff',
+      padding: '0.8rem 1.8rem',
       fontWeight: 800, fontSize: '0.85rem', letterSpacing: '0.1em', textTransform: 'uppercase',
       borderRadius: '2px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.55rem',
       fontFamily: 'inherit',

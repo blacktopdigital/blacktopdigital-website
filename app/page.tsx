@@ -2,14 +2,45 @@ import Image from 'next/image'
 import Link from 'next/link'
 import ChatWidget, { ChatNowButton } from '@/components/ChatWidget'
 
+const industries = [
+  { title: 'Truck & Trailer Repair', desc: 'Breakdowns don’t wait. Be the first shop drivers find.' },
+  { title: 'Towing & Roadside', desc: 'Stranded drivers call whoever shows up first on the map.' },
+  { title: 'Diesel & Heavy Equipment', desc: 'Fleets and contractors who need their rigs back running.' },
+  { title: 'Plumbers', desc: 'Burst pipes and backed-up drains at 2am.' },
+  { title: 'Electricians', desc: 'Outages, panel failures, and emergency repairs.' },
+  { title: 'HVAC', desc: 'No heat in January. No AC in July.' },
+  { title: 'Roofing', desc: 'Storm damage and leaks that can’t wait.' },
+  { title: 'Water & Fire Restoration', desc: 'Flooded basements and fire damage cleanup.' },
+  { title: 'Locksmiths', desc: 'Lockouts that need someone there now.' },
+  { title: 'Garage Door Repair', desc: 'Broken springs and doors stuck shut.' },
+  { title: 'Septic & Drain', desc: 'The calls nobody wants to wait on.' },
+  { title: 'Auto Repair', desc: 'Local shops going up against dealers and chains.' },
+]
+
 const services = [
   { title: 'Google Business Profile', desc: 'Dominate the local map pack. We optimize and manage your GBP so your business shows up first when customers search.' },
   { title: 'Local SEO', desc: 'Rank higher on Google for the searches that matter. Keywords, content, and citations built for your city.' },
-  { title: 'Google Ads Management', desc: 'Every dollar tracked. We build and manage campaigns that drive calls — not just clicks.' },
-  { title: 'Google Local Services Ads', desc: 'Show up at the very top of Google as a verified local business. Pay per lead, not per click.' },
   { title: 'Website Design & Build', desc: 'A site built to convert — fast, mobile-first, and engineered to rank. No templates, no shortcuts.' },
   { title: 'Reputation Management', desc: 'Automated review generation and monitoring. More 5-star reviews, fewer surprises.' },
 ]
+
+const outlineButton: React.CSSProperties = {
+  border: '2px solid #fff', color: '#fff', padding: '0.8rem 1.8rem',
+  fontWeight: 800, fontSize: '0.85rem', letterSpacing: '0.1em',
+  textTransform: 'uppercase', textDecoration: 'none', borderRadius: '2px',
+  display: 'inline-flex', alignItems: 'center', gap: '0.55rem',
+}
+
+function CallButton() {
+  return (
+    <a href="tel:+14798885621" style={outlineButton}>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round">
+        <path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z" />
+      </svg>
+      Call (479) 888-5621
+    </a>
+  )
+}
 
 export default function Home() {
   return (
@@ -30,34 +61,23 @@ export default function Home() {
             <span style={{ color: '#aaaaaa' }}>That Gets Your</span>{' '}
             Phone Ringing.
           </h1>
-          <p style={{ color: '#b8b8b8', fontSize: '1.05rem', lineHeight: 1.75, marginBottom: '2.5rem', maxWidth: '500px' }}>
-            We use artificial intelligence to dominate Google rankings, optimize your Business Profile, and run ads that actually convert — for local businesses ready to grow.
+          <p style={{ color: '#b8b8b8', fontSize: '1.05rem', lineHeight: 1.75, marginBottom: '2.5rem', maxWidth: '520px' }}>
+            We use AI to dominate Google rankings and optimize your Business Profile, so when something breaks, customers find you first. Built for truck repair shops, plumbers, electricians, and emergency service businesses.
           </p>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <Link href="/contact" style={{
-              background: '#fff', color: '#000', padding: '0.9rem 2rem',
-              fontWeight: 800, fontSize: '0.85rem', letterSpacing: '0.1em',
-              textTransform: 'uppercase', textDecoration: 'none', borderRadius: '2px',
-              display: 'inline-block',
-            }}>
-              Get a Free Audit
-            </Link>
-            <ChatNowButton />
+            <ChatNowButton solid />
+            <CallButton />
             <Link href="/services" style={{
               border: '1px solid #2a2a2a', color: '#e0e0e0', padding: '0.9rem 2rem',
               fontWeight: 600, fontSize: '0.85rem', letterSpacing: '0.1em',
               textTransform: 'uppercase', textDecoration: 'none', borderRadius: '2px',
-              display: 'inline-block',
+              display: 'inline-flex', alignItems: 'center',
             }}>
               View Services
             </Link>
           </div>
-          <p style={{ color: '#b8b8b8', fontSize: '0.95rem', marginTop: '1.25rem' }}>
-            Or call us:{' '}
-            <a href="tel:+14798885621" style={{ color: '#fff', fontWeight: 700, textDecoration: 'none' }}>(479) 888-5621</a>
-          </p>
         </div>
-        <div style={{ flex: '0 0 400px', display: 'flex', justifyContent: 'center' }}>
+        <div style={{ flex: '0 1 400px', maxWidth: '100%', display: 'flex', justifyContent: 'center' }}>
           <Image src="/robot-black-bg.png" alt="Black Top Digital AI" width={400} height={400}
             style={{ objectFit: 'contain', width: '100%', height: 'auto' }} priority />
         </div>
@@ -78,14 +98,41 @@ export default function Home() {
         </div>
       </div>
 
-      {/* SERVICES GRID */}
+      {/* INDUSTRIES */}
       <section style={{ padding: '6rem 2rem' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <p style={{ color: '#aaaaaa', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>Industries We Serve</p>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', fontWeight: 900, color: '#fff', marginBottom: '1.25rem' }}>
+            Built for the Businesses<br /><span style={{ color: '#9a9a9a' }}>That Answer the Call.</span>
+          </h2>
+          <p style={{ color: '#b8b8b8', fontSize: '1rem', lineHeight: 1.75, marginBottom: '3rem', maxWidth: '640px' }}>
+            When a truck breaks down or a pipe bursts, people grab their phone and search Google. We make sure the hard-working, emergency service businesses in your town are the ones they call.
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 250px), 1fr))', gap: '1px', background: '#0f0f0f' }}>
+            {industries.map(i => (
+              <div key={i.title} style={{ background: '#000', padding: '1.6rem 1.75rem' }}>
+                <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#fff', marginBottom: '0.45rem' }}>{i.title}</h3>
+                <p style={{ color: '#aaaaaa', fontSize: '0.88rem', lineHeight: 1.6 }}>{i.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: '2.5rem', display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
+            <p style={{ color: '#b8b8b8', fontSize: '0.95rem' }}>
+              Don&apos;t see your trade? If customers call you when something breaks, we can help.
+            </p>
+            <ChatNowButton />
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES GRID */}
+      <section style={{ padding: '6rem 2rem', background: '#030303', borderTop: '1px solid #0f0f0f' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <p style={{ color: '#aaaaaa', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>What We Do</p>
           <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', fontWeight: 900, color: '#fff', marginBottom: '3rem' }}>
             Everything Your Business Needs<br /><span style={{ color: '#9a9a9a' }}>to Own Google.</span>
           </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1px', background: '#0f0f0f' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 260px), 1fr))', gap: '1px', background: '#0f0f0f' }}>
             {services.map(s => (
               <div key={s.title} style={{ background: '#000', padding: '2rem' }}>
                 <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#fff', marginBottom: '0.6rem' }}>{s.title}</h3>
@@ -104,16 +151,16 @@ export default function Home() {
       </section>
 
       {/* WHY US */}
-      <section style={{ padding: '6rem 2rem', background: '#030303', borderTop: '1px solid #0f0f0f' }}>
+      <section style={{ padding: '6rem 2rem', borderTop: '1px solid #0f0f0f' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <p style={{ color: '#aaaaaa', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>Why Black Top Digital</p>
           <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', fontWeight: 900, color: '#fff', marginBottom: '3rem' }}>
             We Don&apos;t Just Report Numbers.<br /><span style={{ color: '#9a9a9a' }}>We Move Them.</span>
           </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '2.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 240px), 1fr))', gap: '2.5rem' }}>
             {[
               { t: 'Industry-Specific', b: "We speak your customers' language. We know your industry, your slow seasons, and your competition." },
-              { t: 'Full Transparency', b: "Every campaign, keyword, and dollar visible in your portal at all times. No mystery invoices." },
+              { t: 'Full Transparency', b: "Every keyword, ranking, and review visible in your portal at all times. No mystery invoices." },
               { t: 'AI-Powered Speed', b: "Our AI runs audits, generates content, and monitors rankings 24/7 — faster than any human team." },
               { t: 'Results or Nothing', b: "We focus on one metric: calls to your business. Not impressions. Not traffic. Calls." },
             ].map(item => (
@@ -127,22 +174,19 @@ export default function Home() {
       </section>
 
       {/* CTA BANNER */}
-      <section style={{ padding: '8rem 2rem', textAlign: 'center' }}>
+      <section style={{ padding: '8rem 2rem', textAlign: 'center', background: '#030303', borderTop: '1px solid #0f0f0f' }}>
         <div style={{ maxWidth: '700px', margin: '0 auto' }}>
           <p style={{ color: '#9a9a9a', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Ready to Grow?</p>
           <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 900, color: '#fff', marginBottom: '1.5rem', lineHeight: 1.1 }}>
             Your Competitors Are Already<br />on Page One.
           </h2>
           <p style={{ color: '#aaaaaa', fontSize: '1rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-            Get a free audit and see exactly where you stand — and what it will take to dominate your market.
+            Tell us about your business and we&apos;ll show you exactly what it takes to own your market.
           </p>
-          <Link href="/contact" style={{
-            background: '#fff', color: '#000', padding: '1rem 3rem',
-            fontWeight: 800, fontSize: '0.88rem', letterSpacing: '0.1em',
-            textTransform: 'uppercase', textDecoration: 'none', borderRadius: '2px', display: 'inline-block',
-          }}>
-            Get My Free Audit
-          </Link>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <ChatNowButton solid />
+            <CallButton />
+          </div>
         </div>
       </section>
 
