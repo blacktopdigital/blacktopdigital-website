@@ -118,7 +118,7 @@ export default function Home() {
           </div>
           <div style={{ marginTop: '2.5rem', display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
             <p style={{ color: '#b8b8b8', fontSize: '0.95rem' }}>
-              Don&apos;t see your trade? If customers call you when something breaks, we can help.
+              Don&apos;t see your trade? No problem. If your customers look for you on Google, we&apos;ll help you get found.
             </p>
             <ChatNowButton />
           </div>
