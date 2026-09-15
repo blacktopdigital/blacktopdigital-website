@@ -104,6 +104,22 @@ body {
   .btn + .btn { margin-left: 0; margin-top: 14px; }
 }
 
+/* Contact page: form beside the intro on desktop, right under the headline on phones. */
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas: "intro form" "details form";
+  gap: 3rem 6rem;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "intro" "form" "details";
+    gap: 2.5rem;
+  }
+}
+
 /* Site additions: icons inside buttons, and button rows that wrap with even spacing. */
 .btn svg { display: inline-block; vertical-align: -3px; margin-right: 8px; } /* Tailwind preflight makes svg block */
 .btn-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }

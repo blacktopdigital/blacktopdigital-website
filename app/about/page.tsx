@@ -134,10 +134,10 @@ export default function About() {
             Ready to See What&apos;s Possible?
           </h2>
           <p style={{ color: '#aaaaaa', fontSize: '0.95rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-            Start with a free audit. No commitment, no pressure — just a clear look at your Google presence and what we&apos;d do to grow it.
+            Tell us a little about your business and we&apos;ll show you exactly how we&apos;d get your phone ringing. No commitment, no pressure.
           </p>
-          <Link href="/contact" className="btn btn-secondary">
-            Get My Free Audit
+          <Link href="/get-started" className="btn btn-primary">
+            Get Started
           </Link>
         </div>
       </section>

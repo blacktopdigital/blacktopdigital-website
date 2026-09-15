@@ -34,12 +34,13 @@ export default function Contact() {
 
   return (
     <div style={{ background: '#000', minHeight: '100vh' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '8rem 2rem 4rem' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(2.5rem, 8vw, 8rem) clamp(1rem, 4vw, 2rem) 4rem' }}>
 
-        <div style={{ display: 'flex', gap: '6rem', flexWrap: 'wrap', alignItems: 'flex-start' }}>
+        {/* Desktop: intro + details on the left, form on the right. Phones: intro, then form, then details. */}
+        <div className="contact-grid">
 
-          {/* LEFT — copy */}
-          <div style={{ flex: '1 1 320px' }}>
+          {/* INTRO */}
+          <div style={{ gridArea: 'intro' }}>
             <p style={{ color: '#aaaaaa', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
               Contact Us
             </p>
@@ -47,10 +48,13 @@ export default function Contact() {
               Let&apos;s Talk About<br />
               <span style={{ color: '#9a9a9a' }}>Your Business.</span>
             </h1>
-            <p style={{ color: '#b8b8b8', fontSize: '0.95rem', lineHeight: 1.8, marginBottom: '3rem' }}>
+            <p style={{ color: '#b8b8b8', fontSize: '0.95rem', lineHeight: 1.8 }}>
               Call or text us at (479) 888-5621, or fill out the form and we&apos;ll reach out shortly. Tell us a little about your business and we&apos;ll show you exactly how we&apos;d get your phone ringing.
             </p>
+          </div>
 
+          {/* DETAILS */}
+          <div style={{ gridArea: 'details' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
               {[
                 { t: 'Response Time', b: 'We’ll reach out shortly after you get in touch.' },
@@ -76,8 +80,8 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* RIGHT — form */}
-          <div style={{ flex: '1 1 400px' }}>
+          {/* FORM */}
+          <div style={{ gridArea: 'form' }}>
             {submitted ? (
               <div style={{ border: '1px solid #111', padding: '4rem 3rem', textAlign: 'center' }}>
                 <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>✓</div>
