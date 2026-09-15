@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { trackLead } from '@/lib/track'
+import { getAttribution } from '@/lib/attribution'
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
@@ -22,10 +23,11 @@ export default function Contact() {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...fields, source: 'form' }),
+        body: JSON.stringify({ ...fields, formId: 'form_contact', attribution: getAttribution() }),
       })
       if (!res.ok) throw new Error()
-      trackLead()
+      const data = await res.json().catch(() => ({}))
+      trackLead(data.leadId)
       setSubmitted(true)
     } catch {
       setError('Couldn’t send. Call or text us at (479) 888-5621.')
@@ -72,11 +74,11 @@ export default function Contact() {
 
             <div style={{ marginTop: '3rem', borderTop: '1px solid #111', paddingTop: '1.5rem' }}>
               <div style={{ fontSize: '0.75rem', color: '#9a9a9a', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Call Us</div>
-              <a href="tel:+14798885621" style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 700, textDecoration: 'none' }}>
+              <a href="tel:+14798885621" data-cta="cta_phone_contact_page" style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 700, textDecoration: 'none' }}>
                 (479) 888-5621
               </a>
               <div style={{ fontSize: '0.75rem', color: '#9a9a9a', letterSpacing: '0.1em', textTransform: 'uppercase', margin: '1.5rem 0 0.5rem' }}>Email Us Directly</div>
-              <a href="mailto:axiom@blacktopdigital.ai" style={{ color: '#c4c4c4', fontSize: '0.88rem', textDecoration: 'none' }}>
+              <a href="mailto:axiom@blacktopdigital.ai" data-cta="cta_email_contact_page" style={{ color: '#c4c4c4', fontSize: '0.88rem', textDecoration: 'none' }}>
                 axiom@blacktopdigital.ai
               </a>
             </div>
@@ -137,7 +139,7 @@ export default function Contact() {
       {/* FOOTER */}
       <footer style={{ borderTop: '1px solid #0f0f0f', padding: '2rem', textAlign: 'center', marginTop: '6rem' }}>
         <p style={{ color: '#9a9a9a', fontSize: '0.78rem', letterSpacing: '0.05em' }}>
-          © 2026 Black Top Digital &nbsp;·&nbsp; <a href="tel:+14798885621" style={{ color: 'inherit', textDecoration: 'none' }}>(479) 888-5621</a> &nbsp;·&nbsp; axiom@blacktopdigital.ai
+          © 2026 Black Top Digital &nbsp;·&nbsp; <a href="tel:+14798885621" data-cta="cta_phone_footer" style={{ color: 'inherit', textDecoration: 'none' }}>(479) 888-5621</a> &nbsp;·&nbsp; axiom@blacktopdigital.ai
         </p>
       </footer>
     </div>

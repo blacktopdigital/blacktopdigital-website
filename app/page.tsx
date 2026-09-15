@@ -10,7 +10,7 @@ const services = [
 
 function CallButton() {
   return (
-    <a href="tel:+14798885621" className="btn btn-secondary">
+    <a href="tel:+14798885621" data-cta="cta_phone_home_cta" className="btn btn-secondary">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round">
         <path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z" />
       </svg>
@@ -41,8 +41,8 @@ export default function Home() {
             If your phone ringing is what pays the bills, we get you found on Google.
           </p>
           <div className="btn-row">
-            <Link href="/get-started" className="btn btn-primary">Get Started</Link>
-            <Link href="/services" className="btn btn-secondary">Services</Link>
+            <Link href="/get-started" data-cta="cta_get_started_home_hero" className="btn btn-primary">Get Started</Link>
+            <Link href="/services" data-cta="cta_services_home_hero" className="btn btn-secondary">Services</Link>
           </div>
         </div>
         <div style={{ flex: '0 1 400px', maxWidth: '100%', display: 'flex', justifyContent: 'center' }}>
@@ -120,7 +120,7 @@ export default function Home() {
             Tell us about your business and we&apos;ll show you exactly what it takes to own your market.
           </p>
           <div className="btn-row" style={{ justifyContent: 'center' }}>
-            <Link href="/get-started" className="btn btn-primary">Get Started</Link>
+            <Link href="/get-started" data-cta="cta_get_started_home_cta" className="btn btn-primary">Get Started</Link>
             <CallButton />
           </div>
         </div>
@@ -129,7 +129,7 @@ export default function Home() {
       {/* FOOTER */}
       <footer style={{ borderTop: '1px solid #0f0f0f', padding: '2rem', textAlign: 'center' }}>
         <p style={{ color: '#9a9a9a', fontSize: '0.78rem', letterSpacing: '0.05em' }}>
-          © 2026 Black Top Digital &nbsp;·&nbsp; <a href="tel:+14798885621" style={{ color: 'inherit', textDecoration: 'none' }}>(479) 888-5621</a> &nbsp;·&nbsp; axiom@blacktopdigital.ai
+          © 2026 Black Top Digital &nbsp;·&nbsp; <a href="tel:+14798885621" data-cta="cta_phone_footer" style={{ color: 'inherit', textDecoration: 'none' }}>(479) 888-5621</a> &nbsp;·&nbsp; axiom@blacktopdigital.ai
         </p>
       </footer>
     </div>

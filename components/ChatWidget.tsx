@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { trackLead } from '@/lib/track'
+import { getAttribution } from '@/lib/attribution'
 
 type Msg = { from: 'bot' | 'user'; text: string }
 
@@ -154,10 +155,14 @@ export default function ChatWidget() {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, phone, business, message: firstQuestion, website: trap }),
+        body: JSON.stringify({
+          name, phone, business, message: firstQuestion, website: trap,
+          formId: 'form_chat_callback', attribution: getAttribution(),
+        }),
       })
       if (!res.ok) throw new Error()
-      trackLead()
+      const data = await res.json().catch(() => ({}))
+      trackLead(data.leadId)
       setMsgs(m => [...m, { from: 'bot', text: `Got it, ${name.trim().split(' ')[0]}. We’ll reach out soon. Feel free to keep asking questions in the meantime.` }])
       setSubmitted(true)
     } catch {
@@ -189,7 +194,7 @@ export default function ChatWidget() {
                 <div style={{ color: '#fff', fontWeight: 800, fontSize: '1.05rem' }}>Black Top Digital</div>
                 <div style={{ color: '#bbb', fontSize: '0.85rem' }}>
                   Ask us anything · Or call{' '}
-                  <a href="tel:+14798885621" style={{ color: '#fff', textDecoration: 'none', fontWeight: 700 }}>(479) 888-5621</a>
+                  <a href="tel:+14798885621" data-cta="cta_phone_chat_header" style={{ color: '#fff', textDecoration: 'none', fontWeight: 700 }}>(479) 888-5621</a>
                 </div>
               </div>
               <button onClick={() => setOpen(false)} aria-label="Close chat" style={{
@@ -253,7 +258,7 @@ export default function ChatWidget() {
               {outOfMessages ? (
                 <div style={{ color: '#bbb', fontSize: '0.9rem', textAlign: 'center' }}>
                   Let&apos;s pick this up with a person. Call{' '}
-                  <a href="tel:+14798885621" style={{ color: '#fff', fontWeight: 700 }}>(479) 888-5621</a>
+                  <a href="tel:+14798885621" data-cta="cta_phone_chat_limit" style={{ color: '#fff', fontWeight: 700 }}>(479) 888-5621</a>
                   {!submitted && ' or use the form above.'}
                 </div>
               ) : (
@@ -268,7 +273,7 @@ export default function ChatWidget() {
                 </form>
               )}
               {!submitted && !formVisible && userCount > 0 && (
-                <button onClick={() => setShowForm(true)} style={linkButton}>
+                <button onClick={() => setShowForm(true)} data-cta="cta_chat_callback_link" style={linkButton}>
                   Want a callback? Leave your number
                 </button>
               )}
@@ -276,7 +281,7 @@ export default function ChatWidget() {
           </div>
         </div>
       ) : (
-        <button onClick={() => setOpen(true)} aria-label="Chat now" style={{
+        <button onClick={() => setOpen(true)} aria-label="Chat now" data-cta="cta_chat_open" style={{
           position: 'fixed', left: '50%', bottom: '20px', transform: 'translateX(-50%)', zIndex: 1000,
           width: 'min(440px, calc(100vw - 32px))', height: '64px',
           borderRadius: '999px', border: 'none', background: '#7C3AED', color: '#fff', cursor: 'pointer',

@@ -58,13 +58,13 @@ export default function Nav() {
               {l.label}
             </Link>
           ))}
-          <a href="tel:+14798885621" style={{
+          <a href="tel:+14798885621" data-cta="cta_phone_nav" style={{
             color: '#fff', fontSize: '0.85rem', fontWeight: 700,
             letterSpacing: '0.05em', textDecoration: 'none', whiteSpace: 'nowrap',
           }}>
             (479) 888-5621
           </a>
-          <Link href="/get-started" className="btn btn-primary" style={{ padding: '10px 20px', fontSize: '0.9rem', whiteSpace: 'nowrap' }}>
+          <Link href="/get-started" data-cta="cta_get_started_nav" className="btn btn-primary" style={{ padding: '10px 20px', fontSize: '0.9rem', whiteSpace: 'nowrap' }}>
             Get Started
           </Link>
         </div>
@@ -90,10 +90,10 @@ export default function Nav() {
           {links.map(l => (
             <Link key={l.href} href={l.href} onClick={close} style={menuLink}>{l.label}</Link>
           ))}
-          <a href="tel:+14798885621" onClick={close} style={{ ...menuLink, fontWeight: 800, borderBottom: 'none' }}>
+          <a href="tel:+14798885621" onClick={close} data-cta="cta_phone_nav_menu" style={{ ...menuLink, fontWeight: 800, borderBottom: 'none' }}>
             Call (479) 888-5621
           </a>
-          <Link href="/get-started" onClick={close} className="btn btn-primary" style={{ display: 'block', marginTop: '0.75rem' }}>
+          <Link href="/get-started" onClick={close} data-cta="cta_get_started_nav_menu" className="btn btn-primary" style={{ display: 'block', marginTop: '0.75rem' }}>
             Get Started
           </Link>
         </div>

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 const packages = [
   {
+    id: 'gbp',
     name: 'Google Business Profile Management',
     desc: 'Your GBP is your most powerful free marketing tool — and most businesses waste it.',
     includes: [
@@ -21,6 +22,7 @@ const packages = [
     ],
   },
   {
+    id: 'local_seo',
     name: 'Local SEO',
     desc: 'Rank for the searches that bring customers to your door — not just traffic to your site.',
     includes: [
@@ -33,6 +35,7 @@ const packages = [
     ],
   },
   {
+    id: 'reputation',
     name: 'Reputation Management',
     desc: 'More 5-star reviews, automated — and zero bad surprises.',
     includes: [
@@ -45,6 +48,7 @@ const packages = [
     ],
   },
   {
+    id: 'website',
     name: 'Website Design & Build',
     desc: 'A fast, mobile-first website built to rank and convert. No page builders, no templates.',
     includes: [
@@ -76,7 +80,7 @@ export default function Services() {
                   </li>
                 ))}
               </ul>
-              <Link href="/get-started" className="btn btn-secondary" style={{ display: 'block' }}>Get Started →</Link>
+              <Link href="/get-started" data-cta={`cta_get_started_services_${p.id}`} className="btn btn-secondary" style={{ display: 'block' }}>Get Started →</Link>
             </div>
           ))}
         </div>
@@ -88,7 +92,7 @@ export default function Services() {
           <p style={{ color: '#b8b8b8', maxWidth: '500px', margin: '0 auto 2rem', lineHeight: 1.7 }}>
             GBP Management + Local SEO + Reputation Management. Everything working together. Maximum results.
           </p>
-          <Link href="/contact" className="btn btn-secondary">Get a Custom Quote →</Link>
+          <Link href="/contact" data-cta="cta_quote_services" className="btn btn-secondary">Get a Custom Quote →</Link>
         </div>
       </div>
     </div>

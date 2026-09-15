@@ -136,7 +136,7 @@ export default function About() {
           <p style={{ color: '#aaaaaa', fontSize: '0.95rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
             Tell us a little about your business and we&apos;ll show you exactly how we&apos;d get your phone ringing. No commitment, no pressure.
           </p>
-          <Link href="/get-started" className="btn btn-primary">
+          <Link href="/get-started" data-cta="cta_get_started_about" className="btn btn-primary">
             Get Started
           </Link>
         </div>
@@ -145,7 +145,7 @@ export default function About() {
       {/* FOOTER */}
       <footer style={{ borderTop: '1px solid #0f0f0f', padding: '2rem', textAlign: 'center' }}>
         <p style={{ color: '#9a9a9a', fontSize: '0.78rem', letterSpacing: '0.05em' }}>
-          © 2026 Black Top Digital &nbsp;·&nbsp; <a href="tel:+14798885621" style={{ color: 'inherit', textDecoration: 'none' }}>(479) 888-5621</a> &nbsp;·&nbsp; axiom@blacktopdigital.ai
+          © 2026 Black Top Digital &nbsp;·&nbsp; <a href="tel:+14798885621" data-cta="cta_phone_footer" style={{ color: 'inherit', textDecoration: 'none' }}>(479) 888-5621</a> &nbsp;·&nbsp; axiom@blacktopdigital.ai
         </p>
       </footer>
     </div>

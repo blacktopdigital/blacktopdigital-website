@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { trackLead } from '@/lib/track'
+import { getAttribution } from '@/lib/attribution'
 
 const labelStyle: React.CSSProperties = {
   fontSize: '0.75rem', color: '#aaaaaa',
@@ -37,10 +38,11 @@ export default function GetStartedForm() {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, phone, business, website: trap, source: 'start' }),
+        body: JSON.stringify({ name, phone, business, website: trap, formId: 'form_get_started', attribution: getAttribution() }),
       })
       if (!res.ok) throw new Error()
-      trackLead()
+      const data = await res.json().catch(() => ({}))
+      trackLead(data.leadId)
       setSubmitted(true)
     } catch {
       setError('Couldn’t send. Call or text us at (479) 888-5621.')
@@ -58,7 +60,7 @@ export default function GetStartedForm() {
         </h2>
         <p style={{ color: '#b8b8b8', fontSize: '0.95rem', lineHeight: 1.7 }}>
           Need us sooner? Call or text{' '}
-          <a href="tel:+14798885621" style={{ color: '#fff', fontWeight: 700, textDecoration: 'none' }}>(479) 888-5621</a>.
+          <a href="tel:+14798885621" data-cta="cta_phone_get_started_success" style={{ color: '#fff', fontWeight: 700, textDecoration: 'none' }}>(479) 888-5621</a>.
         </p>
       </div>
     )
