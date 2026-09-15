@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 // Soft-edge the photo so the shoulders fade into the page instead of ending in a hard crop.
-const MASK = 'radial-gradient(ellipse 64% 66% at 50% 44%, #000 60%, transparent 100%)'
+const MASK = 'radial-gradient(ellipse 58% 60% at 50% 40%, #000 55%, transparent 100%)'
 
 // Services page header: a whispered "Shhh…" headline beside the shushing robot, cut into the black page.
 export default function ShhhBand() {
