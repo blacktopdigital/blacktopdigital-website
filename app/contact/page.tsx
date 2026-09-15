@@ -142,15 +142,8 @@ export default function Contact() {
                 <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: 'absolute', left: '-9999px' }} />
                 {error && <div style={{ color: '#ff8080', fontSize: '0.9rem' }}>{error}</div>}
 
-                <button type="submit" disabled={loading} style={{
-                  background: loading ? '#111' : '#fff',
-                  color: loading ? '#444' : '#000',
-                  border: 'none', padding: '1rem',
-                  fontWeight: 800, fontSize: '0.85rem',
-                  letterSpacing: '0.1em', textTransform: 'uppercase',
-                  cursor: loading ? 'not-allowed' : 'pointer',
-                  borderRadius: '2px', marginTop: '0.5rem',
-                  transition: 'background 0.2s',
+                <button type="submit" disabled={loading} className="btn btn-primary" style={{
+                  width: '100%', marginTop: '0.5rem', opacity: loading ? 0.6 : 1, cursor: loading ? 'wait' : 'pointer',
                 }}>
                   {loading ? 'Sending...' : 'Submit'}
                 </button>

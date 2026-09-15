@@ -43,3 +43,63 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* Buttons: purple primary + white outline secondary (style supplied by Weston). */
+.btn {
+  display: inline-block;
+  padding: 16px 34px;
+  font-family: inherit;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary {
+  background: #7C3AED;
+  color: #FFFFFF;
+  border: 2px solid #7C3AED;
+  box-shadow: 0 0 24px rgba(124, 58, 237, 0.35);
+}
+.btn-primary:hover {
+  background: #8B5CF6;
+  border-color: #8B5CF6;
+  box-shadow: 0 0 34px rgba(124, 58, 237, 0.55);
+  transform: translateY(-2px);
+}
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 0 18px rgba(124, 58, 237, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #FFFFFF;
+  border: 2px solid rgba(255, 255, 255, 0.65);
+  box-shadow: none;
+}
+.btn-secondary:hover {
+  background: #FFFFFF;
+  color: #0A0A0A;
+  border-color: #FFFFFF;
+  transform: translateY(-2px);
+}
+.btn-secondary:active { transform: translateY(0); }
+
+.btn + .btn { margin-left: 14px; }
+
+@media (max-width: 640px) {
+  .btn { display: block; width: 100%; padding: 18px 24px; font-size: 1.125rem; }
+  .btn + .btn { margin-left: 0; margin-top: 14px; }
+}
+
+/* Site additions: icons inside buttons, and button rows that wrap with even spacing. */
+.btn svg { vertical-align: -3px; margin-right: 8px; }
+.btn-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.btn-row .btn + .btn { margin: 0; }

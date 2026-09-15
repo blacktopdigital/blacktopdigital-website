@@ -82,10 +82,8 @@ export default function GetStartedForm() {
       <input value={trap} onChange={e => setTrap(e.target.value)} name="website" tabIndex={-1} autoComplete="off"
         aria-hidden="true" style={{ position: 'absolute', left: '-9999px' }} />
       {error && <div style={{ color: '#ff8080', fontSize: '0.9rem' }}>{error}</div>}
-      <button type="submit" disabled={loading} style={{
-        background: '#fff', color: '#000', border: 'none', padding: '1rem',
-        fontWeight: 800, fontSize: '0.9rem', letterSpacing: '0.1em', textTransform: 'uppercase',
-        cursor: loading ? 'wait' : 'pointer', opacity: loading ? 0.6 : 1, borderRadius: '2px', fontFamily: 'inherit',
+      <button type="submit" disabled={loading} className="btn btn-primary" style={{
+        width: '100%', cursor: loading ? 'wait' : 'pointer', opacity: loading ? 0.6 : 1,
       }}>
         {loading ? 'Sending...' : 'Submit'}
       </button>

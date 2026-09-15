@@ -13,9 +13,9 @@ const FALLBACK_REPLY = 'Sorry, I can’t answer right now. Call or text us at (4
 
 const css = `
   @keyframes btdChatPulse {
-    0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.55), 0 8px 30px rgba(0,0,0,0.6) }
-    70% { box-shadow: 0 0 0 18px rgba(255,255,255,0), 0 8px 30px rgba(0,0,0,0.6) }
-    100% { box-shadow: 0 0 0 0 rgba(255,255,255,0), 0 8px 30px rgba(0,0,0,0.6) }
+    0% { box-shadow: 0 0 0 0 rgba(124,58,237,0.6), 0 8px 30px rgba(0,0,0,0.6) }
+    70% { box-shadow: 0 0 0 18px rgba(124,58,237,0), 0 8px 30px rgba(0,0,0,0.6) }
+    100% { box-shadow: 0 0 0 0 rgba(124,58,237,0), 0 8px 30px rgba(0,0,0,0.6) }
   }
   @keyframes btdTyping { 0%, 80%, 100% { opacity: 0.25 } 40% { opacity: 1 } }
   .btd-chat-dialog { height: min(640px, 100%); }
@@ -46,13 +46,8 @@ function ChatIcon({ size }: { size: number }) {
 
 export function ChatNowButton({ solid = false }: { solid?: boolean }) {
   return (
-    <button onClick={() => window.dispatchEvent(new Event(OPEN_EVENT))} style={{
-      border: '2px solid #fff', background: solid ? '#fff' : 'transparent', color: solid ? '#000' : '#fff',
-      padding: '0.8rem 1.8rem',
-      fontWeight: 800, fontSize: '0.85rem', letterSpacing: '0.1em', textTransform: 'uppercase',
-      borderRadius: '2px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.55rem',
-      fontFamily: 'inherit',
-    }}>
+    <button onClick={() => window.dispatchEvent(new Event(OPEN_EVENT))}
+      className={`btn ${solid ? 'btn-primary' : 'btn-secondary'}`}>
       <ChatIcon size={20} /> Chat Now
     </button>
   )
@@ -244,7 +239,7 @@ export default function ChatWidget() {
                     style={{ position: 'absolute', width: 1, height: 1, opacity: 0, pointerEvents: 'none' }} />
                   {error && <div style={{ color: '#ff8080', fontSize: '0.9rem' }}>{error}</div>}
                   <button type="submit" disabled={sending} style={{
-                    background: '#fff', color: '#000', border: 'none', borderRadius: '8px', padding: '0.9rem',
+                    background: '#7C3AED', color: '#fff', border: 'none', borderRadius: '8px', padding: '0.9rem',
                     fontWeight: 800, fontSize: '0.9rem', letterSpacing: '0.08em', textTransform: 'uppercase',
                     cursor: sending ? 'wait' : 'pointer', opacity: sending ? 0.6 : 1, fontFamily: 'inherit',
                   }}>{sending ? 'Sending...' : 'Submit'}</button>
@@ -264,7 +259,7 @@ export default function ChatWidget() {
                   <input ref={inputRef} value={draft} onChange={e => setDraft(e.target.value)} placeholder="Ask us anything..."
                     aria-label="Your message" maxLength={500} style={input} />
                   <button type="submit" disabled={thinking} style={{
-                    background: '#fff', color: '#000', border: 'none', borderRadius: '8px',
+                    background: '#7C3AED', color: '#fff', border: 'none', borderRadius: '8px',
                     padding: '0 1.2rem', fontWeight: 800, fontSize: '0.9rem', fontFamily: 'inherit',
                     cursor: thinking ? 'wait' : 'pointer', opacity: thinking ? 0.6 : 1,
                   }}>Send</button>
@@ -282,14 +277,14 @@ export default function ChatWidget() {
         <button onClick={() => setOpen(true)} aria-label="Chat now" style={{
           position: 'fixed', left: '50%', bottom: '20px', transform: 'translateX(-50%)', zIndex: 1000,
           width: 'min(440px, calc(100vw - 32px))', height: '64px',
-          borderRadius: '999px', border: 'none', background: '#fff', color: '#000', cursor: 'pointer',
+          borderRadius: '999px', border: 'none', background: '#7C3AED', color: '#fff', cursor: 'pointer',
           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.7rem',
           fontFamily: 'inherit', fontWeight: 900, fontSize: '1.1rem', letterSpacing: '0.08em', textTransform: 'uppercase',
           animation: 'btdChatPulse 2s infinite',
         }}>
           <ChatIcon size={28} />
           Chat Now
-          <span style={{ fontWeight: 600, fontSize: '0.9rem', letterSpacing: 0, textTransform: 'none', color: '#444' }}>
+          <span style={{ fontWeight: 600, fontSize: '0.9rem', letterSpacing: 0, textTransform: 'none', color: 'rgba(255,255,255,0.8)' }}>
             · Ask us anything
           </span>
         </button>

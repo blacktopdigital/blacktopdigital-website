@@ -81,11 +81,7 @@ export default function Services() {
                   </li>
                 ))}
               </ul>
-              <Link href="/get-started" style={{
-                display: 'block', textAlign: 'center', border: '1px solid #1a1a1a',
-                color: '#c4c4c4', padding: '0.75rem', fontSize: '0.8rem',
-                letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none', borderRadius: '2px',
-              }}>Get Started →</Link>
+              <Link href="/get-started" className="btn btn-secondary" style={{ display: 'block' }}>Get Started →</Link>
             </div>
           ))}
         </div>
@@ -97,11 +93,7 @@ export default function Services() {
           <p style={{ color: '#b8b8b8', maxWidth: '500px', margin: '0 auto 2rem', lineHeight: 1.7 }}>
             GBP Management + Local SEO + Reputation Management. Everything working together. Maximum results.
           </p>
-          <Link href="/contact" style={{
-            background: '#fff', color: '#000', padding: '1rem 3rem',
-            fontWeight: 800, fontSize: '0.88rem', letterSpacing: '0.1em',
-            textTransform: 'uppercase', textDecoration: 'none', borderRadius: '2px', display: 'inline-block',
-          }}>Get a Custom Quote →</Link>
+          <Link href="/contact" className="btn btn-primary">Get a Custom Quote →</Link>
         </div>
       </div>
     </div>

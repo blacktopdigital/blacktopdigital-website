@@ -24,16 +24,9 @@ const services = [
   { title: 'Reputation Management', desc: 'Automated review generation and monitoring. More 5-star reviews, fewer surprises.' },
 ]
 
-const outlineButton: React.CSSProperties = {
-  border: '2px solid #fff', color: '#fff', padding: '0.8rem 1.8rem',
-  fontWeight: 800, fontSize: '0.85rem', letterSpacing: '0.1em',
-  textTransform: 'uppercase', textDecoration: 'none', borderRadius: '2px',
-  display: 'inline-flex', alignItems: 'center', gap: '0.55rem',
-}
-
 function CallButton() {
   return (
-    <a href="tel:+14798885621" style={outlineButton}>
+    <a href="tel:+14798885621" className="btn btn-secondary">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round">
         <path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z" />
       </svg>
@@ -64,17 +57,10 @@ export default function Home() {
           <p style={{ color: '#b8b8b8', fontSize: '1.05rem', lineHeight: 1.75, marginBottom: '2.5rem', maxWidth: '520px' }}>
             We use powerful tools to keep you at the top of Google and ranked above your competitors, so when customers search for what you do, they find you first and call you. Built for truck repair shops, plumbers, electricians, and every local business that runs on phone calls.
           </p>
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <div className="btn-row">
             <ChatNowButton solid />
             <CallButton />
-            <Link href="/services" style={{
-              border: '1px solid #2a2a2a', color: '#e0e0e0', padding: '0.9rem 2rem',
-              fontWeight: 600, fontSize: '0.85rem', letterSpacing: '0.1em',
-              textTransform: 'uppercase', textDecoration: 'none', borderRadius: '2px',
-              display: 'inline-flex', alignItems: 'center',
-            }}>
-              View Services
-            </Link>
+            <Link href="/services" className="btn btn-secondary">View Services</Link>
           </div>
         </div>
         <div style={{ flex: '0 1 400px', maxWidth: '100%', display: 'flex', justifyContent: 'center' }}>
@@ -140,11 +126,7 @@ export default function Home() {
             ))}
           </div>
           <div style={{ marginTop: '2.5rem', textAlign: 'center' }}>
-            <Link href="/services" style={{
-              border: '1px solid #1a1a1a', color: '#cccccc', padding: '0.85rem 2.5rem',
-              fontSize: '0.82rem', fontWeight: 600, letterSpacing: '0.1em',
-              textTransform: 'uppercase', textDecoration: 'none', borderRadius: '2px', display: 'inline-block',
-            }}>See All Services →</Link>
+            <Link href="/services" className="btn btn-secondary">See All Services →</Link>
           </div>
         </div>
       </section>
@@ -182,7 +164,7 @@ export default function Home() {
           <p style={{ color: '#aaaaaa', fontSize: '1rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
             Tell us about your business and we&apos;ll show you exactly what it takes to own your market.
           </p>
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+          <div className="btn-row" style={{ justifyContent: 'center' }}>
             <ChatNowButton solid />
             <CallButton />
           </div>
