@@ -2,15 +2,6 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 
-const services = [
-  'Google Business Profile Management',
-  'Local SEO',
-  'Reputation Management',
-  'Website Design & Build',
-  'Full Growth Package',
-  'Not sure — just want to talk',
-]
-
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -20,6 +11,10 @@ export default function Contact() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const fields = Object.fromEntries(new FormData(e.currentTarget))
+    if (String(fields.phone ?? '').replace(/\D/g, '').length < 10) {
+      setError('Enter a 10-digit phone number.')
+      return
+    }
     setLoading(true)
     setError('')
     try {
@@ -94,47 +89,23 @@ export default function Contact() {
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
 
-                <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                  <div style={{ flex: '1 1 160px', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                    <label style={labelStyle}>First Name *</label>
-                    <input required name="firstName" autoComplete="given-name" style={inputStyle} placeholder="John" />
-                  </div>
-                  <div style={{ flex: '1 1 160px', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                    <label style={labelStyle}>Last Name *</label>
-                    <input required name="lastName" autoComplete="family-name" style={inputStyle} placeholder="Smith" />
-                  </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                  <label style={labelStyle}>Your Name *</label>
+                  <input required name="name" autoComplete="name" style={inputStyle} placeholder="John Smith" />
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                  <label style={labelStyle}>Business Name *</label>
-                  <input required name="business" autoComplete="organization" style={inputStyle} placeholder="Smith Truck Repair" />
-                </div>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                  <label style={labelStyle}>Business Phone *</label>
+                  <label style={labelStyle}>Phone Number *</label>
                   <input required name="phone" type="tel" autoComplete="tel" style={inputStyle} placeholder="(555) 000-0000" />
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                  <label style={labelStyle}>Email *</label>
-                  <input required name="email" type="email" autoComplete="email" style={inputStyle} placeholder="john@smithtruckrepair.com" />
+                  <label style={labelStyle}>Business Name <span style={{ textTransform: 'none', letterSpacing: 0 }}>(optional)</span></label>
+                  <input name="business" autoComplete="organization" style={inputStyle} placeholder="Smith Truck Repair" />
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                  <label style={labelStyle}>City / State *</label>
-                  <input required name="city" style={inputStyle} placeholder="Fort Smith, AR" />
-                </div>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                  <label style={labelStyle}>What are you interested in?</label>
-                  <select name="service" style={{ ...inputStyle, appearance: 'none' as const }}>
-                    <option value="">Select a service...</option>
-                    {services.map(s => <option key={s} value={s}>{s}</option>)}
-                  </select>
-                </div>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                  <label style={labelStyle}>Anything else we should know?</label>
+                  <label style={labelStyle}>Anything else we should know? <span style={{ textTransform: 'none', letterSpacing: 0 }}>(optional)</span></label>
                   <textarea name="message" rows={4} style={{ ...inputStyle, resize: 'vertical' as const }}
                     placeholder="Tell us about your business, your biggest challenge, or any questions you have." />
                 </div>
