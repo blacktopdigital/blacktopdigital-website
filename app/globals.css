@@ -100,6 +100,6 @@ body {
 }
 
 /* Site additions: icons inside buttons, and button rows that wrap with even spacing. */
-.btn svg { vertical-align: -3px; margin-right: 8px; }
+.btn svg { display: inline-block; vertical-align: -3px; margin-right: 8px; } /* Tailwind preflight makes svg block */
 .btn-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
 .btn-row .btn + .btn { margin: 0; }
