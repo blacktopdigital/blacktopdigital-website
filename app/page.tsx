@@ -1,21 +1,6 @@
 import Link from 'next/link'
 import GrowthGraphic from '@/components/GrowthGraphic'
-import ChatWidget, { ChatNowButton } from '@/components/ChatWidget'
-
-const industries = [
-  { title: 'Truck & Trailer Repair', desc: 'Breakdowns don’t wait. Be the first shop drivers find.' },
-  { title: 'Towing & Roadside', desc: 'Stranded drivers call whoever shows up first on the map.' },
-  { title: 'Diesel & Heavy Equipment', desc: 'Fleets and contractors who need their rigs back running.' },
-  { title: 'Plumbers', desc: 'Burst pipes and backed-up drains at 2am.' },
-  { title: 'Electricians', desc: 'Outages, panel failures, and emergency repairs.' },
-  { title: 'HVAC', desc: 'No heat in January. No AC in July.' },
-  { title: 'Roofing', desc: 'Storm damage and leaks that can’t wait.' },
-  { title: 'Water & Fire Restoration', desc: 'Flooded basements and fire damage cleanup.' },
-  { title: 'Locksmiths', desc: 'Lockouts that need someone there now.' },
-  { title: 'Garage Door Repair', desc: 'Broken springs and doors stuck shut.' },
-  { title: 'Septic & Drain', desc: 'The calls nobody wants to wait on.' },
-  { title: 'Auto Repair', desc: 'Local shops going up against dealers and chains.' },
-]
+import ChatWidget from '@/components/ChatWidget'
 
 const services = [
   { title: 'Google Business Profile', desc: 'Dominate the local map pack. We optimize and manage your GBP so your business shows up first when customers search.' },
@@ -50,17 +35,15 @@ export default function Home() {
             Black Top Digital · Local Marketing
           </p>
           <h1 style={{ fontSize: 'clamp(2.4rem, 5vw, 4.2rem)', fontWeight: 900, lineHeight: 1.05, marginBottom: '1.5rem', color: '#fff' }}>
-            Show Up First on Google.<br />
-            <span style={{ color: '#aaaaaa' }}>Get Your</span>{' '}
-            Phone Ringing.
+            Marketing built<br />
+            <span style={{ color: '#aaaaaa' }}>for the trades.</span>
           </h1>
           <p style={{ color: '#b8b8b8', fontSize: '1.05rem', lineHeight: 1.75, marginBottom: '2.5rem', maxWidth: '520px' }}>
-            We use powerful tools to keep you at the top of Google and ranked above your competitors, so when customers search for what you do, they find you first and call you. Built for truck repair shops, plumbers, electricians, and every local business that runs on phone calls.
+            If your phone ringing is what pays the bills, we get you found on Google.
           </p>
           <div className="btn-row">
-            <ChatNowButton solid />
-            <CallButton />
-            <Link href="/services" className="btn btn-secondary">View Services</Link>
+            <Link href="/get-started" className="btn btn-primary">Get Started</Link>
+            <Link href="/services" className="btn btn-secondary">Services</Link>
           </div>
         </div>
         <div style={{ flex: '0 1 400px', maxWidth: '100%', display: 'flex', justifyContent: 'center' }}>
@@ -82,33 +65,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-
-      {/* INDUSTRIES */}
-      <section style={{ padding: '6rem 2rem' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <p style={{ color: '#aaaaaa', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>Industries We Serve</p>
-          <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', fontWeight: 900, color: '#fff', marginBottom: '1.25rem' }}>
-            Built for the Businesses<br /><span style={{ color: '#9a9a9a' }}>That Answer the Call.</span>
-          </h2>
-          <p style={{ color: '#b8b8b8', fontSize: '1rem', lineHeight: 1.75, marginBottom: '3rem', maxWidth: '640px' }}>
-            When a truck breaks down or a pipe bursts, people grab their phone and search Google. We make sure the hard-working, emergency service businesses in your town are the ones they call.
-          </p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 250px), 1fr))', gap: '1px', background: '#0f0f0f' }}>
-            {industries.map(i => (
-              <div key={i.title} style={{ background: '#000', padding: '1.6rem 1.75rem' }}>
-                <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#fff', marginBottom: '0.45rem' }}>{i.title}</h3>
-                <p style={{ color: '#aaaaaa', fontSize: '0.88rem', lineHeight: 1.6 }}>{i.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div style={{ marginTop: '2.5rem', display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
-            <p style={{ color: '#b8b8b8', fontSize: '0.95rem' }}>
-              Don&apos;t see your trade? No problem. If your customers look for you on Google, we&apos;ll help you get found.
-            </p>
-            <ChatNowButton />
-          </div>
-        </div>
-      </section>
 
       {/* SERVICES GRID */}
       <section style={{ padding: '6rem 2rem', background: '#030303', borderTop: '1px solid #0f0f0f' }}>
@@ -165,7 +121,7 @@ export default function Home() {
             Tell us about your business and we&apos;ll show you exactly what it takes to own your market.
           </p>
           <div className="btn-row" style={{ justifyContent: 'center' }}>
-            <ChatNowButton solid />
+            <Link href="/get-started" className="btn btn-primary">Get Started</Link>
             <CallButton />
           </div>
         </div>

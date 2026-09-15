@@ -93,7 +93,7 @@ export default function Services() {
           <p style={{ color: '#b8b8b8', maxWidth: '500px', margin: '0 auto 2rem', lineHeight: 1.7 }}>
             GBP Management + Local SEO + Reputation Management. Everything working together. Maximum results.
           </p>
-          <Link href="/contact" className="btn btn-primary">Get a Custom Quote →</Link>
+          <Link href="/contact" className="btn btn-secondary">Get a Custom Quote →</Link>
         </div>
       </div>
     </div>

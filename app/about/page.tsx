@@ -136,7 +136,7 @@ export default function About() {
           <p style={{ color: '#aaaaaa', fontSize: '0.95rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
             Start with a free audit. No commitment, no pressure — just a clear look at your Google presence and what we&apos;d do to grow it.
           </p>
-          <Link href="/contact" className="btn btn-primary">
+          <Link href="/contact" className="btn btn-secondary">
             Get My Free Audit
           </Link>
         </div>
