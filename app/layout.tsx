@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Nav from "@/components/Nav";
+import ChatWidget from "@/components/ChatWidget";
 
 export const metadata: Metadata = {
   title: "Black Top Digital | Marketing Built for the Trades",
@@ -19,9 +20,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body style={{ background: '#000', color: '#f0f0f0', minHeight: '100vh' }}>
         <Nav />
-        <main style={{ paddingTop: '64px' }}>
+        {/* Bottom padding keeps the floating chat bar from covering page footers. */}
+        <main style={{ paddingTop: '64px', paddingBottom: '96px' }}>
           {children}
         </main>
+        <ChatWidget />
       </body>
     </html>
   );

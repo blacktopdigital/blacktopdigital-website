@@ -20,6 +20,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Bigger type on phones: every rem-based size scales up ~12% (16px -> 18px). */
+@media (max-width: 640px) {
+  html { font-size: 112.5%; }
+}
+
 body {
   background: #000;
   color: #f0f0f0;

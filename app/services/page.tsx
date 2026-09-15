@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import ShhhBand from '@/components/ShhhBand'
 
 export const metadata: Metadata = {
   title: 'Services | Black Top Digital',
@@ -60,14 +61,8 @@ const packages = [
 export default function Services() {
   return (
     <div style={{ background: '#000', minHeight: '100vh' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '5rem 2rem' }}>
-        <p style={{ color: '#aaaaaa', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>Services</p>
-        <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 900, color: '#fff', marginBottom: '1rem' }}>
-          Custom Plans Built for Your Market.
-        </h1>
-        <p style={{ color: '#b8b8b8', fontSize: '1rem', marginBottom: '4rem', maxWidth: '500px', lineHeight: 1.7 }}>
-          Every market is different, so every plan is quoted to fit yours. No long-term contracts. Every service includes a monthly report and direct access to your account manager.
-        </p>
+      <ShhhBand />
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem 2rem 5rem' }}>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 420px), 1fr))', gap: '1px', background: '#0f0f0f' }}>
           {packages.map(p => (

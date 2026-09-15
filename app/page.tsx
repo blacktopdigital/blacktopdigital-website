@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import GrowthGraphic from '@/components/GrowthGraphic'
-import ChatWidget from '@/components/ChatWidget'
 
 const services = [
   { title: 'Google Business Profile', desc: 'Dominate the local map pack. We optimize and manage your GBP so your business shows up first when customers search.' },
@@ -128,13 +127,11 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer style={{ borderTop: '1px solid #0f0f0f', padding: '2rem 2rem 7rem', textAlign: 'center' }}>
+      <footer style={{ borderTop: '1px solid #0f0f0f', padding: '2rem', textAlign: 'center' }}>
         <p style={{ color: '#9a9a9a', fontSize: '0.78rem', letterSpacing: '0.05em' }}>
           © 2026 Black Top Digital &nbsp;·&nbsp; <a href="tel:+14798885621" style={{ color: 'inherit', textDecoration: 'none' }}>(479) 888-5621</a> &nbsp;·&nbsp; axiom@blacktopdigital.ai
         </p>
       </footer>
-
-      <ChatWidget />
     </div>
   )
 }
