@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import type { FormEvent } from 'react'
+import { trackLead } from '@/lib/track'
 
 const labelStyle: React.CSSProperties = {
   fontSize: '0.75rem', color: '#aaaaaa',
@@ -39,6 +40,7 @@ export default function GetStartedForm() {
         body: JSON.stringify({ name, phone, business, website: trap, source: 'start' }),
       })
       if (!res.ok) throw new Error()
+      trackLead()
       setSubmitted(true)
     } catch {
       setError('Couldn’t send. Call or text us at (479) 888-5621.')

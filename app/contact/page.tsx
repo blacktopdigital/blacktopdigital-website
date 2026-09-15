@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import type { FormEvent } from 'react'
+import { trackLead } from '@/lib/track'
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
@@ -24,6 +25,7 @@ export default function Contact() {
         body: JSON.stringify({ ...fields, source: 'form' }),
       })
       if (!res.ok) throw new Error()
+      trackLead()
       setSubmitted(true)
     } catch {
       setError('Couldn’t send. Call or text us at (479) 888-5621.')

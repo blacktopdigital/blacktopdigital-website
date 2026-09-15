@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { trackLead } from '@/lib/track'
 
 type Msg = { from: 'bot' | 'user'; text: string }
 
@@ -156,6 +157,7 @@ export default function ChatWidget() {
         body: JSON.stringify({ name, phone, business, message: firstQuestion, website: trap }),
       })
       if (!res.ok) throw new Error()
+      trackLead()
       setMsgs(m => [...m, { from: 'bot', text: `Got it, ${name.trim().split(' ')[0]}. We’ll reach out soon. Feel free to keep asking questions in the meantime.` }])
       setSubmitted(true)
     } catch {
