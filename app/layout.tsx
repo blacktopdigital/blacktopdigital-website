@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 // OpenAI (ChatGPT) ads pixel, as supplied by the ads dashboard.
-const OPENAI_PIXEL = `!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"XgXWaytVSHatmMn4Ekeq13",debug:true});`
+const OPENAI_PIXEL = `!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"XgXWaytVSHatmMn4Ekeq13",debug:false});`
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
