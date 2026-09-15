@@ -44,7 +44,7 @@ body {
   background-clip: text;
 }
 
-/* Buttons: purple primary + white outline secondary (style supplied by Weston). */
+/* Buttons: solid white primary + white outline secondary (Weston's style; purple is reserved for the chat bar). */
 .btn {
   display: inline-block;
   padding: 16px 34px;
@@ -62,20 +62,20 @@ body {
 }
 
 .btn-primary {
-  background: #7C3AED;
-  color: #FFFFFF;
-  border: 2px solid #7C3AED;
-  box-shadow: 0 0 24px rgba(124, 58, 237, 0.35);
+  background: #FFFFFF;
+  color: #0A0A0A;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.18);
 }
 .btn-primary:hover {
-  background: #8B5CF6;
-  border-color: #8B5CF6;
-  box-shadow: 0 0 34px rgba(124, 58, 237, 0.55);
+  background: #E6E6E6;
+  border-color: #E6E6E6;
+  box-shadow: 0 0 34px rgba(255, 255, 255, 0.28);
   transform: translateY(-2px);
 }
 .btn-primary:active {
   transform: translateY(0);
-  box-shadow: 0 0 18px rgba(124, 58, 237, 0.4);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.2);
 }
 
 .btn-secondary {
