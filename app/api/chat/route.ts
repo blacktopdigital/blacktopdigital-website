@@ -6,8 +6,7 @@
 // TextBelt rejects texts containing URLs on unverified keys, so links and domains are defused.
 
 import { cleanAttribution, newId, saveLead, type LeadRecord } from '@/lib/leads'
-
-const TEXTBELT_URL = 'https://textbelt.com/text'
+import { clean, prettyPhone, sendSms } from '@/lib/sms'
 
 // Stable form IDs. Chat and get-started alerts fit one SMS segment (1 credit); the contact form gets two.
 const FORMS = {
@@ -20,45 +19,11 @@ type FormId = keyof typeof FORMS
 // Older page versions sent `source` instead of `formId`.
 const LEGACY_SOURCES: Record<string, FormId> = { form: 'form_contact', start: 'form_get_started' }
 
-// Plain ASCII keeps the text in cheap GSM segments (curly quotes or emoji force Unicode billing).
-function clean(value: unknown, max: number) {
-  return String(value ?? '')
-    .replace(/https?:\/\/\S+|www\.\S+/gi, '[link]')
-    .replace(/\b([a-z0-9-]+)\.(com|net|org|biz|info|us|co|io|ai)\b/gi, '$1 dot $2')
-    .replace(/[‘’]/g, "'")
-    .replace(/[“”]/g, '"')
-    .replace(/[^\x20-\x7E\s]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .slice(0, max)
-}
-
 // Appends "label: tail" only if it fits, trimming the tail to the space left.
 function withTail(base: string, label: string, tail: string, limit: number) {
   const room = limit - base.length - label.length - 1
   if (!tail || room < 15) return base
   return `${base}\n${label}${tail.length > room ? `${tail.slice(0, room - 3)}...` : tail}`
-}
-
-async function sendSms(text: string) {
-  const key = process.env.TEXTBELT_KEY
-  const alertPhones = (process.env.ALERT_PHONE ?? '').split(',').map(p => p.trim()).filter(Boolean)
-  if (!key || alertPhones.length === 0) {
-    console.error('TEXTBELT_KEY or ALERT_PHONE is not set')
-    return false
-  }
-  const results = await Promise.all(alertPhones.map(to =>
-    fetch(TEXTBELT_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ phone: to, message: text, key }),
-    })
-      .then(r => r.json())
-      .catch(err => ({ success: false, error: String(err) })),
-  ))
-  const sent = results.some(r => r.success)
-  if (!sent) console.error('TextBelt failed', results)
-  return sent
 }
 
 export async function POST(request: Request) {
@@ -93,8 +58,7 @@ export async function POST(request: Request) {
   const lastCta = attribution.last_cta as { id?: unknown } | null | undefined
 
   // Business first so Weston knows who he's calling before he dials.
-  const prettyPhone = `(${phone.slice(0, 3)}) ${phone.slice(3, 6)}-${phone.slice(6)}`
-  const lines = [`${FORMS[formId].header} ${leadId}`, `Business: ${business || 'not given'}`, `Name: ${name}`, `Phone: ${prettyPhone}`]
+  const lines = [`${FORMS[formId].header} ${leadId}`, `Business: ${business || 'not given'}`, `Name: ${name}`, `Phone: ${prettyPhone(phone)}`]
   if (isContactForm) {
     if (email) lines.push(`Email: ${email}`)
     if (city) lines.push(`City: ${city}`)

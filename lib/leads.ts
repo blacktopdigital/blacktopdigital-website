@@ -13,6 +13,24 @@ export type Outcome = {
   updated_at: string | null
 }
 
+// Stage 2: the three-question flow shown after the first lead is already saved and texted.
+// Written onto the SAME lead record — never a second lead. `notified_at` is the idempotency
+// guard that stops a double-tap or refresh from sending a second qualified-lead text.
+export type Qualification = {
+  q1: string
+  q2: string
+  q3: string
+  consent: 'yes' | 'no'
+  consent_at: string
+  page: string | null
+  session_id: string | null
+  // Consent evidence, kept only when the visitor actually said yes to being contacted.
+  ip: string | null
+  user_agent: string | null
+  sms_sent: boolean
+  notified_at: string | null
+}
+
 export type LeadRecord = {
   lead_id: string
   created_at: string
@@ -23,6 +41,7 @@ export type LeadRecord = {
   attribution: Record<string, unknown>
   sms_sent: boolean
   outcome: Outcome
+  qualification?: Qualification
 }
 
 export type ContactEvent = {

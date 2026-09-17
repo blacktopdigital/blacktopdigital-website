@@ -3,6 +3,7 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { trackLead } from '@/lib/track'
 import { getAttribution } from '@/lib/attribution'
+import QualifyFlow from '@/components/QualifyFlow'
 
 const labelStyle: React.CSSProperties = {
   fontSize: '0.75rem', color: '#aaaaaa',
@@ -24,6 +25,7 @@ export default function GetStartedForm() {
   const [trap, setTrap] = useState('')
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [leadId, setLeadId] = useState('')
   const [error, setError] = useState('')
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -42,13 +44,22 @@ export default function GetStartedForm() {
       })
       if (!res.ok) throw new Error()
       const data = await res.json().catch(() => ({}))
+      // The lead is already stored and texted at this point; nothing below can undo that.
       trackLead(data.leadId)
+      setLeadId(typeof data.leadId === 'string' ? data.leadId : '')
       setSubmitted(true)
     } catch {
       setError('Couldn’t send. Call or text us at (479) 888-5621.')
     } finally {
       setLoading(false)
     }
+  }
+
+  // Lead is in. Roll straight into the three-question flow, which updates this same lead.
+  // Without a Lead ID (honeypot, or the store and SMS both hiccuped) fall back to the plain
+  // thank-you, so a bot never reaches the flow and a real person never sees a broken one.
+  if (submitted && leadId) {
+    return <QualifyFlow leadId={leadId} firstName={name.trim().split(' ')[0]} />
   }
 
   if (submitted) {
