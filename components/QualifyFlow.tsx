@@ -30,6 +30,7 @@ export default function QualifyFlow({ leadId, firstName }: Props) {
   const router = useRouter()
   const [step, setStep] = useState(0) // 0,1,2 = questions; 3 = permission; 4 = done
   const [answers, setAnswers] = useState<Record<string, string>>({})
+  const [justPicked, setJustPicked] = useState('') // shows the tap landing before advancing
   const [consent, setConsent] = useState<'yes' | 'no' | null>(null)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
@@ -114,6 +115,18 @@ export default function QualifyFlow({ leadId, firstName }: Props) {
   const q = QUESTIONS[step]
   const selected = answers[q.id]
 
+  // Tapping an answer IS the answer: record it, let the highlight land for a beat so the tap
+  // visibly registers, then move on. No second tap on a Next button.
+  function choose(option: string) {
+    if (justPicked) return
+    setAnswers(a => ({ ...a, [q.id]: option }))
+    setJustPicked(option)
+    setTimeout(() => {
+      setJustPicked('')
+      setStep(s => s + 1)
+    }, 180)
+  }
+
   return (
     <div style={card}>
       <p style={{ ...progressStyle, marginBottom: '1rem' }}>{q.progress}</p>
@@ -123,14 +136,14 @@ export default function QualifyFlow({ leadId, firstName }: Props) {
 
       <div role="radiogroup" aria-labelledby={`${q.id}-label`} style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
         {q.options.map(option => {
-          const isOn = selected === option
+          const isOn = justPicked ? justPicked === option : selected === option
           return (
             <button key={option} type="button" role="radio" aria-checked={isOn}
-              onClick={() => setAnswers(a => ({ ...a, [q.id]: option }))}
+              onClick={() => choose(option)}
               style={{
                 ...optionBase,
                 borderColor: isOn ? '#fff' : '#333',
-                background: isOn ? '#141414' : '#050505',
+                background: isOn ? '#1e1e1e' : '#050505',
                 fontWeight: isOn ? 700 : 400,
               }}>
               {option}
@@ -139,19 +152,8 @@ export default function QualifyFlow({ leadId, firstName }: Props) {
         })}
       </div>
 
-      <button
-        onClick={() => setStep(step + 1)}
-        disabled={!selected}
-        className="btn btn-primary"
-        style={{
-          width: '100%', marginTop: '1.75rem',
-          cursor: selected ? 'pointer' : 'not-allowed', opacity: selected ? 1 : 0.4,
-        }}>
-        {q.button}
-      </button>
-
       {step > 0 && (
-        <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+        <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
           <button onClick={() => setStep(step - 1)} style={backStyle}>← Back</button>
         </div>
       )}

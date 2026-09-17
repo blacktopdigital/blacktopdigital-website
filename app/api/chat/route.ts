@@ -6,6 +6,7 @@
 // TextBelt rejects texts containing URLs on unverified keys, so links and domains are defused.
 
 import { cleanAttribution, newId, saveLead, type LeadRecord } from '@/lib/leads'
+import { PHONE_ERROR, normalisePhone } from '@/lib/phone'
 import { clean, prettyPhone, sendSms } from '@/lib/sms'
 
 // Stable form IDs. Chat and get-started alerts fit one SMS segment (1 credit); the contact form gets two.
@@ -48,9 +49,10 @@ export async function POST(request: Request) {
   const email = clean(body.email, 80).replace('@', ' at ')
   const city = clean(body.city, 60)
   const service = clean(body.service, 60)
-  const phone = String(body.phone ?? '').replace(/\D/g, '').slice(-10)
-  if (!name || phone.length !== 10) {
-    return Response.json({ ok: false, error: 'Name and a 10-digit phone are required.' }, { status: 400 })
+  // Not `.slice(-10)`: that silently accepted 29 digits of junk by keeping the last ten.
+  const phone = normalisePhone(body.phone)
+  if (!name || !phone) {
+    return Response.json({ ok: false, error: `Name and a real phone number are required. ${PHONE_ERROR}` }, { status: 400 })
   }
 
   const leadId = newId('BTD')

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { trackLead } from '@/lib/track'
 import { getAttribution } from '@/lib/attribution'
+import { PHONE_ERROR, normalisePhone } from '@/lib/phone'
 
 type Msg = { from: 'bot' | 'user'; text: string }
 
@@ -145,8 +146,12 @@ export default function ChatWidget() {
 
   async function sendContact(e: React.FormEvent) {
     e.preventDefault()
-    if (!name.trim() || phone.replace(/\D/g, '').length < 10) {
-      setError('Enter your name and a 10-digit phone number.')
+    if (!name.trim()) {
+      setError('Enter your name.')
+      return
+    }
+    if (!normalisePhone(phone)) {
+      setError(PHONE_ERROR)
       return
     }
     setError('')

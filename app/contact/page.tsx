@@ -3,6 +3,7 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { trackLead } from '@/lib/track'
 import { getAttribution } from '@/lib/attribution'
+import { PHONE_ERROR, normalisePhone } from '@/lib/phone'
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
@@ -13,8 +14,8 @@ export default function Contact() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const fields = Object.fromEntries(new FormData(e.currentTarget))
-    if (String(fields.phone ?? '').replace(/\D/g, '').length < 10) {
-      setError('Enter a 10-digit phone number.')
+    if (!normalisePhone(fields.phone)) {
+      setError(PHONE_ERROR)
       return
     }
     setLoading(true)
