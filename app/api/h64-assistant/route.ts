@@ -113,7 +113,7 @@ export async function POST(request: Request) {
   const cors = corsHeaders(origin)
 
   // Keep the prepaid gateway balance for actual visitors to the site.
-  if (!origin || !ALLOWED_ORIGINS.has(origin)) {
+  if (!ALLOWED_ORIGINS.has(origin ?? '')) {
     return Response.json({ ok: false }, { status: 403, headers: cors })
   }
 

@@ -9,7 +9,9 @@
   if (window.__h64ChatLoaded) return;
   window.__h64ChatLoaded = true;
 
-  var API = 'https://blacktopdigital.ai/api/h64-assistant';
+  // Must be the canonical www host: the apex issues a 307, and a redirect on a
+  // CORS preflight is fatal ("Redirect is not allowed for a preflight request").
+  var API = 'https://www.blacktopdigital.ai/api/h64-assistant';
   var PHONE = '479-668-3107';
   var TEL = 'tel:4796683107';
   var BLUE = '#4DA6FF';
@@ -27,6 +29,7 @@
     'text-transform:uppercase;letter-spacing:1px;display:flex;align-items:center;justify-content:center;gap:10px;',
     'box-shadow:0 6px 24px rgba(0,0,0,.5);animation:h64pulse 2.6s ease-in-out infinite}',
     '#h64chat-bar:hover{background:#6fb8ff}',
+    '@media(max-width:440px){#h64chat-bar{font-size:13px;letter-spacing:.3px;padding:14px 12px;gap:8px}}',
     '@keyframes h64pulse{0%,100%{box-shadow:0 6px 24px rgba(0,0,0,.5),0 0 0 0 rgba(77,166,255,.55)}',
     '50%{box-shadow:0 6px 24px rgba(0,0,0,.5),0 0 0 12px rgba(77,166,255,0)}}',
     '@media (prefers-reduced-motion:reduce){#h64chat-bar{animation:none}}',
