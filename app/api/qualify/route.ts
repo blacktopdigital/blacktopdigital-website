@@ -5,8 +5,11 @@
 // Safeguards:
 //   - Answers must match lib/qualify-questions.ts exactly, so nothing free-typed reaches the SMS.
 //   - Only same-origin requests, and only leads created in the last 24h, are accepted.
-//   - `qualification.notified_at` makes the qualified-lead text idempotent: a double-tap,
+//   - `qualification.notified_at` makes the follow-up text idempotent: a double-tap,
 //     refresh or back-navigation re-saves the answers but never sends a second text.
+//
+// Both outcomes text Weston: a qualified alert on yes, and a "declined" alert on no, so
+// silence never has to mean two different things.
 
 import { getLead, saveLead, type Qualification } from '@/lib/leads'
 import { QUESTIONS, canonicalAnswer } from '@/lib/qualify-questions'
@@ -82,30 +85,37 @@ export async function POST(request: Request) {
     notified_at: null,
   }
 
-  let smsSent = false
-  if (consent === 'yes') {
-    const c = lead.contact
-    const phone = String(c.phone ?? '')
-    const utm = (lead.attribution?.first_touch as { utm?: Record<string, string>; click_ids?: Record<string, string> } | null) ?? null
-    const campaign = [utm?.utm?.utm_source, utm?.utm?.utm_campaign].filter(Boolean).join(' / ')
-      || Object.keys(utm?.click_ids ?? {})[0] || ''
-    const lines = [
-      `BTD QUALIFIED LEAD ${lead.lead_id}`,
-      `Business: ${clean(c.business, 60) || 'not given'}`,
-      `Name: ${clean(c.name, 60)}`,
-      `Phone: ${phone.length === 10 ? prettyPhone(phone) : clean(phone, 20)}`,
-      `Q1: ${clean(qualification.q1, 60)}`,
-      `Q2: ${clean(qualification.q2, 60)}`,
-      `Q3: ${clean(qualification.q3, 60)}`,
-      'Permission: YES',
-      `Consent: ${centralTime(now)} CT`,
-      `Source: ${lead.form_id}`,
-    ]
+  // Both outcomes are worth a text. A decline still answered all three questions, so someone
+  // who said "as soon as possible" and then got cold feet on the call is still a warm lead —
+  // and without this, silence would mean either "declined" or "closed the page halfway".
+  const yes = consent === 'yes'
+  const c = lead.contact
+  const phone = String(c.phone ?? '')
+  const touch = (lead.attribution?.first_touch as { utm?: Record<string, string>; click_ids?: Record<string, string> } | null) ?? null
+  const campaign = [touch?.utm?.utm_source, touch?.utm?.utm_campaign].filter(Boolean).join(' / ')
+    || Object.keys(touch?.click_ids ?? {})[0] || ''
+  const lines = [
+    `${yes ? 'BTD QUALIFIED LEAD' : 'BTD DECLINED (do not call)'} ${lead.lead_id}`,
+    `Business: ${clean(c.business, 60) || 'not given'}`,
+    `Name: ${clean(c.name, 60)}`,
+    `Phone: ${phone.length === 10 ? prettyPhone(phone) : clean(phone, 20)}`,
+    `Q1: ${clean(qualification.q1, 60)}`,
+    `Q2: ${clean(qualification.q2, 60)}`,
+    `Q3: ${clean(qualification.q3, 60)}`,
+    `Permission: ${yes ? 'YES' : 'NO'}`,
+  ]
+  // The consent timestamp is the legal record, so it rides along on a yes. A decline doesn't
+  // need it, or the source and campaign - those are all on the lead in the dashboard - and
+  // every line costs SMS credits.
+  if (yes) {
+    lines.push(`Consent: ${centralTime(now)} CT`, `Source: ${lead.form_id}`)
     if (campaign) lines.push(`Campaign: ${clean(campaign, 60)}`)
-    smsSent = await sendSms(lines.join('\n').slice(0, SMS_LIMIT))
-    qualification.sms_sent = smsSent
-    if (smsSent) qualification.notified_at = new Date().toISOString()
   }
+
+  const smsSent = await sendSms(lines.join('\n').slice(0, SMS_LIMIT))
+  qualification.sms_sent = smsSent
+  // Guards BOTH paths against a double-tap or refresh sending a second text.
+  if (smsSent) qualification.notified_at = new Date().toISOString()
 
   // Only promote an untouched lead, so Weston's own status edits in the admin dashboard win.
   const outcome = consent === 'yes' && lead.outcome.status === 'new'
